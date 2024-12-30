@@ -546,33 +546,33 @@ color: #ccc;
     max-width: 600px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+}
   
-  .settings-search {
+.settings-search {
     margin-bottom: 20px;
-  }
+}
   
-  .settings-search input {
+.settings-search input {
     width: 100%;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
     outline: none;
-  }
+}
   
-  .settings-search input:focus {
+.settings-search input:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  }
+}
   
-  .settings-list {
+.settings-list {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
+}
   
-  .settings-item {
+.settings-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -583,35 +583,68 @@ color: #ccc;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: background-color 0.3s;
-  }
+}
   
-  .settings-item:hover {
+.settings-item:hover {
     background-color: #f1f1f1;
-  }
+}
   
-  .settings-icon {
+.settings-icon {
     font-size: 20px;
     margin-right: 10px;
-  }
+}
   
-  .settings-label {
+.settings-label {
     flex-grow: 1;
     font-size: 16px;
     color: #333;
-  }
+}
   
-  .settings-arrow {
+.settings-arrow {
     font-size: 18px;
     color: #ccc;
-  }
+}
   
-  .settings-arrow:hover {
+.settings-arrow:hover {
     color: #007bff;
-  }
+}
 
-  .settings-page h1 {
+.settings-page h1 {
     font-size: 24px;
     color: #333;
     margin-bottom: 20px;
-  }
+}
+  
+/////////
+
+/* src/components/Account.css */
+.account-page {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+  
+.account-page h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+  
+.account-details {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.8;
+}
+  
+.account-details p {
+    margin: 10px 0;
+}
+  
+.account-details strong {
+    color: #333;
+}
   

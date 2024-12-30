@@ -4,6 +4,7 @@ import Signup from "./Signup";
 import Signin from "./Signin";
 import CheckList from "./CheckList";
 import Settings from "./Settings";
+import Account from "./Account";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/register" element={<Signup />} />
           <Route path="/checklist" element={<CheckList />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </div>
     </Router>
