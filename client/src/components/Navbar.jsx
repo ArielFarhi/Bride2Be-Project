@@ -9,12 +9,6 @@ const HamburgerMenu = () => {
         setIsOpen(!isOpen);
     };
 
-    // const handleLogout = () => {
-    //     localStorage.removeItem("token");
-
-    //     navigate("/login");
-    // };
-
     return (
         <div>
             {!isOpen && (<button className="menu-button" onClick={toggleMenu}>☰</button>)}
@@ -26,7 +20,7 @@ const HamburgerMenu = () => {
                         <li><Link to="#">👤 Personal Area</Link></li>
                         <li><Link to="#">📋 Task Management</Link></li>
                         <li><Link to="#">📦 Vendors</Link></li>
-                        <li><Link to="#">✔️ Check List</Link></li>
+                        <li><Link to="/checklist">✔️ Check List</Link></li>
                         <li><Link to="#">📞 Emergency Planner</Link></li>
                     </ul>
                     <ul className="bottom-links">

@@ -58,7 +58,28 @@ const registerUser = async (req, res) => {
     }
 };
 
+const updateCompletedTasks = async (req, res) => {
+    try {
+        const { userId, taskId, completed } = req.body;
+
+        const update = completed
+            ? { $addToSet: { completedTasks: taskId } } 
+            : { $pull: { completedTasks: taskId } }; 
+
+        const user = await User.findByIdAndUpdate(userId, update, { new: true });
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        res.status(200).json({ message: "Task status updated successfully", completedTasks: user.completedTasks });
+    } catch (error) {
+        console.error("Error updating completed tasks:", error);
+        res.status(500).json({ error: "Failed to update completed tasks" });
+    }
+};
+
 module.exports = {
     registerUser,
     loginUser,
+    updateCompletedTasks,
 };

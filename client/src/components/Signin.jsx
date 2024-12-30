@@ -23,7 +23,8 @@ function Login() {
             const data = await response.json();
             if (response.ok) {
                 localStorage.setItem("token", data.user.userID);
-                navigate("/HomePage");
+                // navigate("/HomePage");
+                navigate("/checklist");
             } else {
                 setError(data.message || "Login failed. Please check your username and password.");
             }

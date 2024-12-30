@@ -3,6 +3,6 @@ const { checklistTasksController } = require('../controllers/checkListsControlle
 
 const checklistRouter = new Router();
 
-checklistRouter.get('/',checklistTasksController.getChecklistTask);
+checklistRouter.get('/',checklistTasksController.getChecklistTasks);
 
 module.exports = { checklistRouter };

@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/users', usersRouter);
-app.use('/api/checklistTasks', checklistRouter);
+app.use('/api/checklist', checklistRouter);
 
 app.use((req, res) => {
     res.status(400).send("Page wasn't found");
