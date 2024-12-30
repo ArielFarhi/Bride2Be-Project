@@ -19,11 +19,16 @@ html {
 }
 
 body {
-    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    background: linear-gradient(135deg, #af8dc3, #f6f6f6);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     color: #444444;
-    padding: 0 16px;
 }
-
 header {
     display: flex;
     justify-content: space-between;
@@ -180,7 +185,6 @@ header h1 {
     text-decoration-line: none;
 }
 
-/* עיצוב לעמוד ההרשמה */
 .login-register {
     max-width: 400px;
     margin: 50px auto;
@@ -194,12 +198,10 @@ header h1 {
 .login-register h1 {
     font-size: 24px;
     color: #af8dc3;
-    /* ורוד לכותרות */
     margin-bottom: 20px;
     font-family: "Montserrat", sans-serif;
 }
 
-/* כפתורי בחירת זוג */
 .couple-type {
     display: flex;
     justify-content: space-between;
@@ -208,7 +210,6 @@ header h1 {
 
 .couple-button {
     background-color: #d8bfd8;
-    /* רקע סגול בהיר */
     border: 2px solid #af8dc3;
     color: #ffffff;
     font-size: 20px;
@@ -225,17 +226,14 @@ header h1 {
 
 .couple-button.active {
     background-color: #af8dc3;
-    /* ורוד כהה */
     color: #ffffff;
 }
 
 .couple-button:hover {
     background-color: #f2d5e2;
-    /* ורוד בהיר */
     transform: scale(1.05);
 }
 
-/* שדות הטופס */
 form input {
     width: 90%;
     padding: 10px;
@@ -246,7 +244,6 @@ form input {
     font-family: "Montserrat", sans-serif;
 }
 
-/* עיצוב בחירת תפקיד */
 .role-container {
     text-align: center;
     margin: 20px 0;
@@ -304,14 +301,11 @@ form input {
 
 .role-selection input[type="radio"]:checked+label {
     color: #af8dc3;
-    /* צבע טקסט נבחר */
     font-weight: bold;
 }
 
-/* כפתור הרשמה */
 form button {
     background-color: #af8dc3;
-    /* ורוד */
     color: white;
     border: none;
     border-radius: 8px;
@@ -324,10 +318,8 @@ form button {
 
 form button:hover {
     background-color: #8c6a8d;
-    /* ורוד כהה יותר */
 }
 
-/* עיצוב רספונסיבי */
 @media (max-width: 768px) {
     .login-register {
         width: 90%;
@@ -353,6 +345,105 @@ form button:hover {
     color: red;
     font-size: 14px;
     margin-top: 5px;
+}
+
+
+.login-container {
+    background: #ffffff;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.login-container .logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    background: url("../images/Bride2Be_Logo.jpeg") no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+    border: 3px solid #af8dc3;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1 {
+    font-size: 28px;
+    color: #af8dc3;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+form input {
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    color: #444444;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+form input:focus {
+    outline: none;
+    border-color: #af8dc3;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+form button {
+    width: 100%;
+    background: linear-gradient(135deg, #af8dc3, #8c6a8d);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form button:hover {
+    background: linear-gradient(135deg, #8c6a8d, #6c5676);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.login-container .register-btn {
+    display: block;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #af8dc3;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.login-container .register-btn:hover {
+    color: #8c6a8d;
+    transform: scale(1.1);
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
 }
 
 /* footer {
