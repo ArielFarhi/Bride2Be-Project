@@ -19,6 +19,4 @@ const userSchema = new Schema({
     ]
 }, { collection: 'users' });
 
-const User = model('User', userSchema);
-
-module.exports = User;
+export default model("User", UserSchema, "users");
