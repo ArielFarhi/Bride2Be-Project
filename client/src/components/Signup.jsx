@@ -5,7 +5,7 @@ import React, { useState } from "react";
 function Signup() {
     const [formData, setFormData] = useState({
         coupleType: "BrideAndGroom",
-        role: "Bride", 
+        role: "Bride",
         fullName: "",
         email: "",
         phone: "",
