@@ -21,7 +21,6 @@ html {
 body {
     background-color: #ffffff;
     color: #444444;
-    padding: 0 16px;
 }
 
 header {
@@ -53,30 +52,20 @@ header h1 {
     height: 50px;
     background-image: url('../images/Bride2Be_Logo.jpeg');
     background-size: cover;
-    background-position: center;
     border-radius: 50%;
     border: 2px solid #af8dc3;
 }
 
 .menu-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
     background-color: white;
     color: #af8dc3;
     border: 2px solid #af8dc3;
     font-size: 24px;
     cursor: pointer;
     border-radius: 8px;
-    padding: 5px 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
     width: 50px;
     height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .menu-button:hover {
@@ -192,3 +181,69 @@ footer p {
 color: #ccc;
 } */
 
+.checklist-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+  
+.checklist-title {
+    font-size: 24px;
+    color: #ff5e8e;
+    margin-bottom: 20px;
+    text-align: center;
+}
+  
+.section {
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+  
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #ff5e8e;
+    font-weight: bold;
+}
+  
+.section-header:hover {
+    background-color: #ffe4eb;
+}
+  
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-top: 1px solid #e5e5e5;
+}
+  
+.task-item:first-child {
+    border-top: none;
+}
+  
+.task-item span {
+    font-size: 16px;
+    color: #555;
+}
+  
+input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+  
