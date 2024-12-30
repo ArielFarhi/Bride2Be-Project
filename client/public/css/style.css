@@ -451,6 +451,8 @@ color: #ccc;
 .checklist-container {
     max-width: 600px;
     border-radius: 8px;
+    background-color: #f9f9f9;
+    padding-bottom: 10px;
 }
 
 .checklist-container h1 {
@@ -465,19 +467,16 @@ color: #ccc;
     border: 1px solid #ccc;
     border-radius: 16px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .section-header {
     padding: 10px;
     margin: 10px;
-    font-size: 18px;
     font-weight: bold;
     color: black;
     display: flex;
     justify-content: space-between;
     cursor: pointer;
-    border-bottom: 1px solid #ddd;
     border-radius: 6px 6px 0 0;
 }
 
@@ -498,7 +497,7 @@ color: #ccc;
 }
 
 .task-item.completed {
-    background-color: #d4edda;
+    background-color: #ccc;
 }
 
 .task-title {
@@ -522,7 +521,7 @@ color: #ccc;
 }
 
 .overall-progress h2 {
-    font-size: 18px;
+    font-size: 15px;
     color: #333;
 }
 
@@ -536,11 +535,83 @@ color: #ccc;
 
 .progress-bar-fill {
     height: 100%;
-    background-color: green;
+    background-color: #d8bfd8;
     transition: width 0.3s ease-in-out;
 }
 
-
-
+.settings-page {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
   
+  .settings-search {
+    margin-bottom: 20px;
+  }
+  
+  .settings-search input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .settings-search input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  .settings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .settings-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .settings-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .settings-icon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  
+  .settings-label {
+    flex-grow: 1;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .settings-arrow {
+    font-size: 18px;
+    color: #ccc;
+  }
+  
+  .settings-arrow:hover {
+    color: #007bff;
+  }
 
+  .settings-page h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  

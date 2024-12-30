@@ -25,7 +25,7 @@ const HamburgerMenu = () => {
                     </ul>
                     <ul className="bottom-links">
                         {/* <li><button onClick={handleLogout}>🚪 Log-out</button></li> */}
-                        <li><Link to="#">⚙️ Setting</Link></li>
+                        <li><Link to="/settings">⚙️ Setting</Link></li>
                     </ul>
                 </nav>
             </div>
