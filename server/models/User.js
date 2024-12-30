@@ -1,22 +1,37 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
+const bcrypt = require("bcrypt");
 
-const userSchema = new Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    role: {
-        type: String,
-        enum: ["Bride", "Groom", "Other"],
-        default: "Bride"
+const userSchema = new Schema(
+    {
+        fullName: { type: String, required: false },
+        username: { type: String, required: false, unique: true },
+        email: { type: String, required: false, unique: true },
+        password: { type: String, required: false },
+        role: {
+            type: String,
+            enum: ["Bride", "Groom", "Other"],
+            default: "Bride",
+        },
+        coupleType: {
+            type: String,
+            enum: ["BrideAndGroom", "BrideAndBride", "GroomAndGroom"],
+            default: "BrideAndGroom",
+        },
+        wedding_date: { type: Date, required: false },
     },
-    wedding_date: { type: Date, required: true },
-    // tasks: [TaskSchema],
-    notifications: [
-        {
-            message: { type: String, required: true },
-            date: { type: Date, default: Date.now }
-        }
-    ]
-}, { collection: 'users' });
+    { collection: "users" }
+);
 
-export default model("User", UserSchema, "users");
+// Pre-save middleware to hash passwords
+userSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) return next();
+    try {
+        const salt = await bcrypt.genSalt(10);
+        this.password = await bcrypt.hash(this.password, salt);
+        next();
+    } catch (error) {
+        next(error);
+    }
+});
+
+module.exports = model("User", userSchema);

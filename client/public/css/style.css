@@ -180,6 +180,181 @@ header h1 {
     text-decoration-line: none;
 }
 
+/* עיצוב לעמוד ההרשמה */
+.login-register {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.login-register h1 {
+    font-size: 24px;
+    color: #af8dc3;
+    /* ורוד לכותרות */
+    margin-bottom: 20px;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* כפתורי בחירת זוג */
+.couple-type {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.couple-button {
+    background-color: #d8bfd8;
+    /* רקע סגול בהיר */
+    border: 2px solid #af8dc3;
+    color: #ffffff;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex: 1;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.couple-button.active {
+    background-color: #af8dc3;
+    /* ורוד כהה */
+    color: #ffffff;
+}
+
+.couple-button:hover {
+    background-color: #f2d5e2;
+    /* ורוד בהיר */
+    transform: scale(1.05);
+}
+
+/* שדות הטופס */
+form input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* עיצוב בחירת תפקיד */
+.role-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.role-container h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.role-selection {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.role-selection input[type="radio"] {
+    display: none;
+}
+
+.role-selection label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.role-selection .icon {
+    width: 60px;
+    height: 60px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 8px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.role-selection label:hover .icon {
+    transform: scale(1.1);
+}
+
+.role-selection label {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+.role-selection input[type="radio"]:checked+label {
+    color: #af8dc3;
+    /* צבע טקסט נבחר */
+    font-weight: bold;
+}
+
+/* כפתור הרשמה */
+form button {
+    background-color: #af8dc3;
+    /* ורוד */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #8c6a8d;
+    /* ורוד כהה יותר */
+}
+
+/* עיצוב רספונסיבי */
+@media (max-width: 768px) {
+    .login-register {
+        width: 90%;
+        padding: 15px;
+    }
+
+    form input,
+    form button {
+        font-size: 14px;
+    }
+
+    .couple-button {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .role-selection label {
+        font-size: 12px;
+    }
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
 /* footer {
 position: absolute;
 text-align: center;
@@ -191,4 +366,3 @@ height: 2.5rem;
 footer p {
 color: #ccc;
 } */
-
