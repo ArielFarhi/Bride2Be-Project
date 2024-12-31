@@ -5,6 +5,7 @@ import Signin from "./Signin";
 import CheckList from "./CheckList";
 import Settings from "./Settings";
 import Account from "./Account";
+import Emergency from "./Emergency";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/checklist" element={<CheckList />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/emergency" element={<Emergency />} />
         </Routes>
       </div>
     </Router>

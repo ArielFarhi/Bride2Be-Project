@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Header from "./Header";
 
 const Account = () => {
   const [userData, setUserData] = useState(null);
@@ -34,12 +35,15 @@ const Account = () => {
   }
 
   return (
-    <div className="account-page">
-      <h1>Account Details</h1>
-      <div className="account-details">
-        <p><strong>Full Name:</strong> {userData.fullName}</p>
-        <p><strong>Username:</strong> {userData.username}</p>
-        <p><strong>Email:</strong> {userData.email}</p>
+    <div>
+      <Header />
+      <div className="account-page">
+        <h1>Account Details</h1>
+        <div className="account-details">
+          <p><strong>Full Name:</strong> {userData.fullName}</p>
+          <p><strong>Username:</strong> {userData.username}</p>
+          <p><strong>Email:</strong> {userData.email}</p>
+        </div>
       </div>
     </div>
   );

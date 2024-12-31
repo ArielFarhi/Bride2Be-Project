@@ -615,9 +615,6 @@ color: #ccc;
     margin-bottom: 20px;
 }
   
-/////////
-
-/* src/components/Account.css */
 .account-page {
     max-width: 600px;
     margin: 20px auto;
@@ -647,4 +644,53 @@ color: #ccc;
 .account-details strong {
     color: #333;
 }
+
+.account-page {
+    padding: 20px;
+    background-color: #f9f9f9;
+    height: 160vmin;
+}
+
+.emergency-page {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+    color: #333;
+}
+  
+.emergency-page h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #af8dc3;
+}
+  
+.vendor-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+  
+.vendor-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 300px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+  
+.vendor-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+  
+
+  
+
+
+  
   

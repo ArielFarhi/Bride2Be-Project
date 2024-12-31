@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-const vendorSchema = new mongoose.Schema(
+const vendorSchema = new Schema(
   {
     fullName: { type: String, required: true }, 
     email: { type: String, required: true, unique: true }, 
@@ -16,10 +16,7 @@ const vendorSchema = new mongoose.Schema(
       enum: ["North", "Center", "South"],
     },
   },
-  { collection: "vendors" } 
-);
-
-// module.exports = mongoose.model("Vendor", vendorSchema);
+  { collection: "vendors" });
 
 const Vendor = model('Vendor', vendorSchema);
 

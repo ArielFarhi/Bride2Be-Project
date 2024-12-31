@@ -7,6 +7,7 @@ const port = process.env.PORT || 8080;
 
 const { usersRouter } = require("./routers/usersRouter");
 const { checklistRouter } = require("./routers/checkListsRouter");
+const vendorsRouter = require("./routers/vendorsRouter");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 
 app.use('/api/users', usersRouter);
 app.use('/api/checklist', checklistRouter);
+app.use("/api/vendors", vendorsRouter);
 
 app.use((req, res) => {
     res.status(400).send("Page wasn't found");
