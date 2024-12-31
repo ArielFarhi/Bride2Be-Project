@@ -446,6 +446,30 @@ form button:hover {
     text-align: center;
 }
 
+.home-page {
+    text-align: center;
+    padding: 20px;
+}
+
+.couple-image {
+    width: 300px;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.countdown {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #444444;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 /* footer {
 position: absolute;
 text-align: center;
