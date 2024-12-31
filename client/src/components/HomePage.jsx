@@ -21,22 +21,23 @@ function HomePage() {
                 }
             };
             calculateCountdown();
-            const timer = setInterval(calculateCountdown, 1000); // עדכון ספירה כל שנייה
+            const timer = setInterval(calculateCountdown, 1000);
             return () => clearInterval(timer);
         }
     }, []);
 
     return (
-        <div className="home-page">
+        <div>
             <Header />
-            <Navbar />
-            <div className="home-content">
-                <img
-                    src="./images/Bride&Groom.webp"
-                    alt="Couple"
-                    className="couple-image"
-                />
-                <div className="countdown">{weddingCountdown}</div>
+            <div className="home-page">
+                <div className="home-content">
+                    <img
+                        src="./images/Bride&Groom.webp"
+                        alt="Couple"
+                        className="couple-image"
+                    />
+                    <div className="countdown">{weddingCountdown}</div>
+                </div>
             </div>
         </div>
     );
