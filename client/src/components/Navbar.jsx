@@ -16,7 +16,7 @@ const HamburgerMenu = () => {
                 <button className="close-button" onClick={toggleMenu}>✖</button>
                 <nav className="menu-nav">
                     <ul className="top-links">
-                        <li><Link to="/HomePage">🏠 HomePage</Link></li>
+                        <li><Link to="/home">🏠 HomePage</Link></li>
                         <li><Link to="#">👤 Personal Area</Link></li>
                         <li><Link to="#">📋 Task Management</Link></li>
                         <li><Link to="#">📦 Vendors</Link></li>
