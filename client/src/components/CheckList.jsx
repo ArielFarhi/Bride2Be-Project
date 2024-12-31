@@ -20,7 +20,6 @@ function CheckList() {
                 }
                 const tasksData = await tasksResponse.json();
 
-                // סידור המשימות לפי sections
                 const groupedTasks = tasksData.reduce((acc, task) => {
                     if (!acc[task.section]) {
                         acc[task.section] = [];
