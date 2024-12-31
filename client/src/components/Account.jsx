@@ -6,7 +6,7 @@ const Account = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const userId = localStorage.getItem("token"); // מזהה המשתמש שמור בלוקאל סטורג'
+    const userId = localStorage.getItem("token"); 
     async function fetchUserData() {
       try {
         const response = await fetch(`http://localhost:8080/api/users/${userId}`);
