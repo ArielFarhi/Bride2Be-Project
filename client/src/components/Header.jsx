@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 
 function Header({ user }) {
-    console.log(user);
     const navigate = useNavigate();
 
     function goToHome() {

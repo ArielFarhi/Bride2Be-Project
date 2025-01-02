@@ -7,7 +7,7 @@ const socketHandler = (io) => {
         socket.on("send_message", (msg) => {
             const newMessage = new Message({
                 content: msg.text,
-                userName: msg.user,
+                username: msg.username,
             });
 
             newMessage
@@ -16,7 +16,7 @@ const socketHandler = (io) => {
                     io.emit("receive_message", {
                         id: savedMessage._id,
                         text: savedMessage.content,
-                        user: savedMessage.userName,
+                        username: savedMessage.username,
                         timestamp: savedMessage.timestamp,
                     });
                 })

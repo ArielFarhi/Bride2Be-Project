@@ -34,7 +34,10 @@ const Chat = ({ user }) => {
 
     const sendMessage = () => {
         if (message.trim() !== "") {
-            const chatMessage = { username: user.username, text: message };
+            const chatMessage = { 
+                username: user.username, 
+                text: message,
+            };
             socket.emit("send_message", chatMessage);
             setMessage("");
         }
@@ -45,9 +48,8 @@ const Chat = ({ user }) => {
             <Header user={user}/>
             <div className="chat-messages">
                 {messages.map((msg, index) => (
-                    console.log(`user.username msg.username ${user.username} ${msg.userName}`),
-                    <div key={index} className={`chat-message ${user.username === msg.userName ? "self" : ""}`}>
-                        <strong>{msg.user || msg.userName}: </strong>
+                    <div key={index} className={`chat-message ${user.username === msg.username ? "self" : ""}`}>
+                        <strong>{msg.user || msg.username}: </strong>
                         {msg.text || msg.content}
                     </div>
                 ))}
