@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({ setUser }) {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -23,7 +23,10 @@ function Login() {
             const data = await response.json();
             if (response.ok) {
                 localStorage.setItem("token", data.user.userID);
-                navigate("/HomePage");
+                console.log(data);
+                console.log(data.user);
+                setUser(data.user);
+                navigate("/chat");
             } else {
                 setError(data.message || "Login failed. Please check your username and password.");
             }
