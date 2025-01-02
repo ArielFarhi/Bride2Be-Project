@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-// import { useNavigate } f
-// rom "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
     const [formData, setFormData] = useState({
@@ -14,15 +13,13 @@ function Signup() {
         password: "",
     });
     const [error, setError] = useState("");
-
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-
     const handleRegister = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        setError("");
         try {
             const response = await fetch("http://localhost:8080/api/users/register", {
                 method: "POST",
@@ -33,15 +30,16 @@ function Signup() {
             });
 
             if (response.ok) {
+                const userData = await response.json();
+                localStorage.setItem("user", JSON.stringify(userData));
                 alert("Registration successful!");
-                // navigate("/login");
+                navigate("/home");
             } else {
                 const errorData = await response.json();
-                console.log(errorData);
-                alert(`Registration failed: ${errorData.message}`);
+                setError(errorData.error || "Registration failed. Please try again.");
             }
         } catch (err) {
-            setError(error.response?.data?.error || "Registration failed");
+            setError("An error occurred. Please try again.");
             console.error(err);
         }
     };
@@ -53,31 +51,32 @@ function Signup() {
                 <div className="couple-type">
                     <button
                         type="button"
-                        className={`couple-button ${formData.coupleType === "BrideAndGroom" ? "active" : ""
-                            }`}
+                        className={`couple-button ${
+                            formData.coupleType === "BrideAndGroom" ? "active" : ""
+                        }`}
                         onClick={() => setFormData({ ...formData, coupleType: "BrideAndGroom" })}
                     >
                         👰🤵
                     </button>
                     <button
                         type="button"
-                        className={`couple-button ${formData.coupleType === "BrideAndBride" ? "active" : ""
-                            }`}
+                        className={`couple-button ${
+                            formData.coupleType === "BrideAndBride" ? "active" : ""
+                        }`}
                         onClick={() => setFormData({ ...formData, coupleType: "BrideAndBride" })}
                     >
                         👰👰
                     </button>
                     <button
                         type="button"
-                        className={`couple-button ${formData.coupleType === "GroomAndGroom" ? "active" : ""
-                            }`}
+                        className={`couple-button ${
+                            formData.coupleType === "GroomAndGroom" ? "active" : ""
+                        }`}
                         onClick={() => setFormData({ ...formData, coupleType: "GroomAndGroom" })}
                     >
                         🤵🤵
                     </button>
                 </div>
-
-                {}
                 <input
                     type="text"
                     name="fullName"
@@ -86,8 +85,6 @@ function Signup() {
                     onChange={handleChange}
                     required
                 />
-
-                {}
                 <div className="role-container">
                     <h2>I'm the:</h2>
                     <div className="role-selection">
@@ -156,9 +153,9 @@ function Signup() {
                     required
                 />
                 <input
-                    type="text"
+                    type="password"
                     name="password"
-                    placeholder="password"
+                    placeholder="Password"
                     value={formData.password}
                     onChange={handleChange}
                     required

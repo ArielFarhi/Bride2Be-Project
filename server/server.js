@@ -7,8 +7,11 @@ const cors = require("cors");
 const socketHandler = require("./socketHandler");
 
 const PORT = process.env.PORT || 8080;
+
 const { usersRouter } = require("./routers/usersRouter");
 const { messagesRouter } = require("./routers/messagesRouter");
+const { checklistRouter } = require("./routers/checkListsRouter");
+const vendorsRouter = require("./routers/vendorsRouter");
 
 const app = express();
 const server = http.createServer(app);
@@ -36,6 +39,8 @@ app.use((req, res, next) => {
 
 app.use("/api/users", usersRouter);
 app.use('/api/messages', messagesRouter);
+app.use('/api/checklist', checklistRouter);
+app.use("/api/vendors", vendorsRouter);
 
 app.use((req, res) => {
     res.status(400).send("Page wasn't found");

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
-
+import Header from "./Header";
 
 const socket = io("http://localhost:8080");
 
@@ -13,8 +13,7 @@ const Chat = ({ user }) => {
             try {
                 const response = await fetch("http://localhost:8080/api/messages");
                 const data = await response.json();
-                console.log("Fetched messages:", data);
-                setMessages(data); // Populate messages state
+                setMessages(data);
             } catch (err) {
                 console.error("Error fetching messages:", err);
             }
@@ -35,7 +34,7 @@ const Chat = ({ user }) => {
 
     const sendMessage = () => {
         if (message.trim() !== "") {
-            const chatMessage = { user: user.username, text: message };
+            const chatMessage = { username: user.username, text: message };
             socket.emit("send_message", chatMessage);
             setMessage("");
         }
@@ -43,9 +42,11 @@ const Chat = ({ user }) => {
 
     return (
         <div className="chat-container">
+            <Header user={user}/>
             <div className="chat-messages">
                 {messages.map((msg, index) => (
-                    <div key={index} className="chat-message">
+                    console.log(`user.username msg.username ${user.username} ${msg.userName}`),
+                    <div key={index} className={`chat-message ${user.username === msg.userName ? "self" : ""}`}>
                         <strong>{msg.user || msg.userName}: </strong>
                         {msg.text || msg.content}
                     </div>

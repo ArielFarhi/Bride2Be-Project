@@ -18,6 +18,7 @@ const userSchema = new Schema(
             default: "BrideAndGroom",
         },
         wedding_date: { type: Date, required: false },
+        completedTasks: { type: [String], default: [] }, 
     },
     { collection: "users" }
 );
@@ -34,4 +35,8 @@ userSchema.pre("save", async function (next) {
     }
 });
 
-module.exports = model("User", userSchema);
+// module.exports = model("User", userSchema);
+
+const User = model('User', userSchema);
+
+module.exports = User;

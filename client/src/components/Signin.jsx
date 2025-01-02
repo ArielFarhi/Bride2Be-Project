@@ -23,10 +23,8 @@ function Login({ setUser }) {
             const data = await response.json();
             if (response.ok) {
                 localStorage.setItem("token", data.user.userID);
-                console.log(data);
-                console.log(data.user);
                 setUser(data.user);
-                navigate("/chat");
+                navigate("/home");
             } else {
                 setError(data.message || "Login failed. Please check your username and password.");
             }
