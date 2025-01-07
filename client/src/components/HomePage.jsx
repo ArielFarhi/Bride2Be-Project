@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import Navbar from "./Navbar";
-// import "./HomePage.css";
+// import Navbar from "./Navbar";
 
 function HomePage({ user }) {
     const [weddingCountdown, setWeddingCountdown] = useState("");
