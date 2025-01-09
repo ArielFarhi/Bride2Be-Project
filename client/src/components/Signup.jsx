@@ -33,7 +33,7 @@ function Signup() {
                 const userData = await response.json();
                 localStorage.setItem("user", JSON.stringify(userData));
                 alert("Registration successful!");
-                navigate("/home");
+                navigate("/login");
             } else {
                 const errorData = await response.json();
                 setError(errorData.error || "Registration failed. Please try again.");
