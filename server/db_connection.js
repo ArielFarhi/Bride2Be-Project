@@ -5,9 +5,6 @@ const consts = require('./constants');
 const { DB_HOST, DB_USER, DB_PASSWORD } = consts;
 const url = DB_HOST;
 
-console.log('DB_HOST:', DB_HOST);
-console.log('DB_USER:', DB_USER);
-console.log('DB_PASSWORD:', DB_PASSWORD);
 const options = {
     user: DB_USER,
     pass: DB_PASSWORD
