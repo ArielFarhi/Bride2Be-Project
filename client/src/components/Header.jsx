@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import HamburgerMenu from "./Navbar";
 import { useNavigate } from "react-router-dom";
 
@@ -17,6 +18,10 @@ function Header({ user }) {
             <div className="header-image" onClick={goToHome}></div>
         </header>
     );
+}
+
+Header.propTypes = {
+    user: PropTypes.object.isRequired,
 }
 
 export default Header;

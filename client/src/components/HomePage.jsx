@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import Navbar from "./Navbar";
-// import "./HomePage.css";
+import ProgressBar from "./ProgressBar";
 
 function HomePage({ user }) {
     const [weddingCountdown, setWeddingCountdown] = useState("");
@@ -38,6 +37,9 @@ function HomePage({ user }) {
                     />
                     <div className="countdown">{weddingCountdown}</div>
                 </div>
+                {/* @TODO: add To user the progress number and use it here/
+                <ProgressBar progress={user.progress} /> */}
+                <ProgressBar progress={17} />
             </div>
         </div>
     );

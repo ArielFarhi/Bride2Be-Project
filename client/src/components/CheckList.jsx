@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
+import ProgressBar from "./ProgressBar";
 
 function CheckList({ user }) {
     const [tasks, setTasks] = useState([]);
@@ -87,7 +88,8 @@ function CheckList({ user }) {
         <div className="checklist-container">
             <Header user={user} />
             <h1>Checklist Tasks</h1>
-            <div className="overall-progress">
+
+            {/* <div className="overall-progress">
                 <h2>Total Progress: {calculateTotalProgress()}%</h2>
                 <div className="progress-bar">
                     <div
@@ -95,7 +97,10 @@ function CheckList({ user }) {
                         style={{ width: `${calculateTotalProgress()}%` }}
                     ></div>
                 </div>
-            </div>
+            </div> */}
+
+            <ProgressBar progress={calculateTotalProgress()} />
+
             {Object.entries(tasks).map(([section, sectionTasks]) => (
                 <div key={section} className="section">
                     <div className="section-header" onClick={() => toggleSection(section)}>
