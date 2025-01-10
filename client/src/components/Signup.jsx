@@ -5,7 +5,8 @@ function Signup() {
     const [formData, setFormData] = useState({
         coupleType: "BrideAndGroom",
         role: "Bride",
-        fullName: "",
+        partnerOneName: "",
+        partnerTwoName: "",
         email: "",
         phone: "",
         username: "",
@@ -77,14 +78,37 @@ function Signup() {
                         🤵🤵
                     </button>
                 </div>
-                <input
-                    type="text"
-                    name="fullName"
-                    placeholder="Full Name"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    required
-                />
+                <div className="name-input">
+                    <input
+                        type="text"
+                        name="partnerOneName"
+                        placeholder={
+                            formData.coupleType === "BrideAndBride"
+                                ? "Bride 1's Name"
+                                : formData.coupleType === "GroomAndGroom"
+                                ? "Groom 1's Name"
+                                : "Bride's Name"
+                        }
+                        value={formData.partnerOneName || ""}
+                        onChange={handleChange}
+                        required
+                    />
+                    <span className="and-symbol">&</span>
+                    <input
+                        type="text"
+                        name="partnerTwoName"
+                        placeholder={
+                            formData.coupleType === "BrideAndBride"
+                                ? "Bride 2's Name"
+                                : formData.coupleType === "GroomAndGroom"
+                                ? "Groom 2's Name"
+                                : "Groom's Name"
+                        }
+                        value={formData.partnerTwoName || ""}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
                 <div className="role-container">
                     <h2>I'm the:</h2>
                     <div className="role-selection">

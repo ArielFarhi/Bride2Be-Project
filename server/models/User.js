@@ -3,7 +3,8 @@ const bcrypt = require("bcrypt");
 
 const userSchema = new Schema(
     {
-        fullName: { type: String, required: false },
+        partnerOneName: { type: String, required: false },
+        partnerTwoName: { type: String, required: false },
         username: { type: String, required: false, unique: true },
         email: { type: String, required: false, unique: true },
         password: { type: String, required: false },
@@ -18,7 +19,7 @@ const userSchema = new Schema(
             default: "BrideAndGroom",
         },
         wedding_date: { type: Date, required: false },
-        completedTasks: { type: [String], default: [] }, 
+        completedTasks: { type: [String], default: [] },
     },
     { collection: "users" }
 );

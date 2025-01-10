@@ -196,6 +196,18 @@ header h1 {
     font-family: "Montserrat", sans-serif;
 }
 
+.name-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.and-symbol {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #444;
+}
+
 .couple-type {
     display: flex;
     justify-content: space-between;
@@ -221,6 +233,7 @@ header h1 {
 .couple-button.active {
     background-color: #af8dc3;
     color: #ffffff;
+    border-color: #444;
 }
 
 .couple-button:hover {

@@ -18,6 +18,8 @@ const loginUser = async (req, res) => {
             message: "Login successful",
             user: {
                 userID: user._id,
+                partnerOneName: user.partnerOneName,
+                partnerTwoName: user.partnerTwoName,
                 username: user.username,
                 role: user.role,
                 coupleType: user.coupleType,
@@ -32,7 +34,7 @@ const loginUser = async (req, res) => {
 
 const registerUser = async (req, res) => {
     try {
-        const { fullName, username, email, password, role, coupleType, wedding_date } = req.body;
+        const { partnerOneName, partnerTwoName, username, email, password, role, coupleType, wedding_date } = req.body;
 
         const existingUser = await User.findOne({ $or: [{ email }, { username }] });
         if (existingUser) {
@@ -40,7 +42,8 @@ const registerUser = async (req, res) => {
         }
 
         const newUser = new User({
-            fullName,
+            partnerOneName,
+            partnerTwoName,
             username,
             email,
             password,
@@ -50,10 +53,12 @@ const registerUser = async (req, res) => {
         });
 
         await newUser.save();
-        res.status(201).json({ 
+        res.status(201).json({
             message: "User registered successfully!",
-            user: { 
+            user: {
                 userID: newUser._id,
+                partnerOneName: newUser.partnerOneName,
+                partnerTwoName: newUser.partnerTwoName,
                 username: newUser.username,
                 role: newUser.role,
                 coupleType: newUser.coupleType,
