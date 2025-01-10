@@ -8,6 +8,7 @@ import CheckList from "./CheckList";
 import Settings from "./Settings";
 import Account from "./Account";
 import Emergency from "./Emergency";
+import UserProfile from "./UserProfile";
 
 import Chat from "./Chat";
 
@@ -22,10 +23,12 @@ function App() {
           <Route path="/chat" element={<Chat user={user}/>} />
           <Route path="/home" element={<HomePage user={user} />} />
           <Route path="/register" element={<Signup />} />
+          <Route path="/login" element={<Signin setUser={setUser}/>} />
           <Route path="/checklist" element={<CheckList user={user} />} />
           <Route path="/settings" element={<Settings user={user} />} />
           <Route path="/account" element={<Account user={user} />} />
           <Route path="/emergency" element={<Emergency user={user} />} />
+          <Route path="/profile" element={<UserProfile user={user} />} />
         </Routes>
       </div>
     </Router>
