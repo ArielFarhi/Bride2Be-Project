@@ -7,6 +7,7 @@ const userSchema = new Schema(
         partnerTwoName: { type: String, required: false },
         username: { type: String, required: false, unique: true },
         email: { type: String, required: false, unique: true },
+        phone: { type: String, required: true },
         password: { type: String, required: false },
         role: {
             type: String,
