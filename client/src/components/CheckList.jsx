@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
+import Header from "./Header";
 
 function CheckList({ user }) {
     const [tasks, setTasks] = useState([]);
@@ -75,6 +76,17 @@ function CheckList({ user }) {
         }
     };
 
+    const sortSections = (sections) => {
+        return Object.entries(sections).sort(([sectionA, tasksA], [sectionB, tasksB]) => {
+            const isCompletedA = tasksA.every((task) => task.completed);
+            const isCompletedB = tasksB.every((task) => task.completed);
+
+            if (isCompletedA && !isCompletedB) return 1; 
+            if (!isCompletedA && isCompletedB) return -1; 
+            return 0;
+        });
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -84,45 +96,49 @@ function CheckList({ user }) {
     }
 
     return (
-        <div className="checklist-container">
-            <h1>Checklist Tasks</h1>
-
-            <ProgressBar progress={calculateTotalProgress()} />
-
-            {Object.entries(tasks).map(([section, sectionTasks]) => (
-                <div key={section} className="section">
-                    <div className="section-header" onClick={() => toggleSection(section)}>
-                        <span>{section}</span>
-                        <span>{sections[section] ? "▼" : "►"}</span>
-                    </div>
-                    {sections[section] && (
-                        <ul className="task-list">
-                            {sectionTasks.map((task) => (
-                                <li
-                                    key={task._id}
-                                    className={`task-item ${task.completed ? "completed" : ""}`}
-                                >
-                                    <span
-                                        className={`task-title ${task.completed ? "completed" : ""
-                                            }`}
-                                    >
-                                        {task.title}
-                                    </span>
-                                    <div className="task-actions">
-                                        <input
-                                            type="checkbox"
-                                            checked={task.completed}
-                                            onChange={() =>
-                                                toggleTaskCompletion(task._id, task.completed)
-                                            }
-                                        />
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
-            ))}
+        <div>
+        <Header user={user} />
+            <div className="checklist-container">
+                <h1>Checklist Tasks</h1>
+                <ProgressBar progress={calculateTotalProgress()} />
+                {sortSections(tasks).map(([section, sectionTasks]) => {
+                    const isCompleted = sectionTasks.every((task) => task.completed); 
+                    return (
+                        <div
+                            key={section}
+                            className={`section ${isCompleted ? "completed-section" : ""}`} 
+                        >
+                            <div className="section-header" onClick={() => toggleSection(section)}>
+                                <span>{section}</span>
+                                <span>{sections[section] ? "▼" : "►"}</span>
+                            </div>
+                            {sections[section] && (
+                                <ul className="task-list">
+                                    {sectionTasks.map((task) => (
+                                        <li
+                                            key={task._id}
+                                            className={`task-item ${task.completed ? "completed" : ""}`}
+                                        >
+                                            <span className={`task-title ${task.completed ? "completed" : ""}`}>
+                                                {task.title}
+                                            </span>
+                                            <div className="task-actions">
+                                                <input
+                                                    type="checkbox"
+                                                    checked={task.completed}
+                                                    onChange={() =>
+                                                        toggleTaskCompletion(task._id, task.completed)
+                                                    }
+                                                />
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 }

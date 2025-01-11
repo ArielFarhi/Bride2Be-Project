@@ -22,7 +22,7 @@ const HamburgerMenu = ({ setUser }) => {
                     <ul className="top-links">
                         <li><Link to="/" onClick={closeMenu}>🏠 HomePage</Link></li>
                         <li><Link to="/profile" onClick={closeMenu}>👤 Personal Area</Link></li>
-                        <li><Link to="#" onClick={closeMenu}>📋 Task Management</Link></li>
+                        <li><Link to="/taskPath" onClick={closeMenu}>📋 Task Management</Link></li>
                         <li><Link to="#" onClick={closeMenu}>📦 Vendors</Link></li>
                         <li><Link to="/checklist" onClick={closeMenu}>✔️ Check List</Link></li>
                         <li><Link to="/emergency" onClick={closeMenu}>📞 Emergency Planner</Link></li>

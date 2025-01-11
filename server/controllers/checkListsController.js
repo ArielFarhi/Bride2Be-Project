@@ -1,10 +1,5 @@
 const ChecklistTask = require("../models/Checklist");
-const User = require("../models/User"); //
-
-// async function getChecklistTasks(req, res) {
-//     const checklistTasks = await ChecklistTask.find({});
-//     res.json(checklistTasks);
-// }
+const User = require("../models/User"); 
 
 async function getChecklistTasks(req, res) {
     const { userId } = req.query;

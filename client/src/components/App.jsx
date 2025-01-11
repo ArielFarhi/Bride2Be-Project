@@ -9,8 +9,9 @@ import CheckList from "./CheckList";
 import Settings from "./Settings";
 import Account from "./Account";
 import Emergency from "./Emergency";
-import UserProfile from "./UserProfile";
 import Chat from "./Chat";
+import TaskPath from "./TaskPath";
+import UserProfile from "./UserProfile";
 import ProtectedRoute from "./ProtectedRoute";
 import NotFound from "./NotFound";
 
@@ -82,6 +83,14 @@ function App() {
             element={
               <ProtectedRoute user={user}>
                 <UserProfile user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/taskPath"
+            element={
+              <ProtectedRoute user={user}>
+                <TaskPath user={user} />
               </ProtectedRoute>
             }
           />
