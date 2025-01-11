@@ -8,7 +8,7 @@ const userSchema = new Schema(
         username: { type: String, required: false, unique: true },
         email: { type: String, required: false, unique: true },
         phone: { type: String, required: true },
-        password: { type: String, required: false },
+        password: { type: String, required: true },
         role: {
             type: String,
             enum: ["Bride", "Groom", "Other"],
@@ -19,7 +19,7 @@ const userSchema = new Schema(
             enum: ["BrideAndGroom", "BrideAndBride", "GroomAndGroom"],
             default: "BrideAndGroom",
         },
-        wedding_date: { type: Date, required: false },
+        weddingDate: { type: Date, required: true },
         completedTasks: { type: [String], default: [] },
     },
     { collection: "users" }

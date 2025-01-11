@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Signup from "./Signup";
 import Signin from "./Signin";
 import HomePage from "./HomePage";
-
 import CheckList from "./CheckList";
 import Settings from "./Settings";
 import Account from "./Account";

@@ -37,7 +37,7 @@ const loginUser = async (req, res) => {
 
 const registerUser = async (req, res) => {
     try {
-        const { partnerOneName, partnerTwoName, username, email, phone, password, role, coupleType, wedding_date } = req.body;
+        const { partnerOneName, partnerTwoName, username, email, phone, password, role, coupleType, weddingDate } = req.body;
 
         const existingUser = await User.findOne({ $or: [{ email }, { username }] });
         if (existingUser) {
@@ -53,7 +53,7 @@ const registerUser = async (req, res) => {
             password,
             role,
             coupleType,
-            wedding_date,
+            weddingDate,
         });
 
         await newUser.save();
@@ -66,7 +66,7 @@ const registerUser = async (req, res) => {
                 username: newUser.username,
                 role: newUser.role,
                 coupleType: newUser.coupleType,
-                wedding_date: newUser.wedding_date,
+                weddingDate: newUser.weddingDate,
             },
         });
     } catch (error) {
