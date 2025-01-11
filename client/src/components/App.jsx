@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Header from "./Header";
 import Signup from "./Signup";
-import Signin from "./Signin";
+import Login from "./Login";
 import HomePage from "./HomePage";
 import CheckList from "./CheckList";
 import Settings from "./Settings";
 import Account from "./Account";
 import Emergency from "./Emergency";
 import UserProfile from "./UserProfile";
-
 import Chat from "./Chat";
 import ProtectedRoute from "./ProtectedRoute";
+import NotFound from "./NotFound";
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -22,10 +23,10 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {user && <Header user={user} />}
+        {user && <Header user={user} setUser={setUser} />}
 
         <Routes>
-          <Route path="/signin" element={<Signin setUser={setUser} />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Signup />} />
 
           <Route
@@ -84,6 +85,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>

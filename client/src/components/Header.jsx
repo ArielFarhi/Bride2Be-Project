@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import HamburgerMenu from "./Navbar";
+import HamburgerMenu from "./HamburgerMenu";
 import { useNavigate } from "react-router-dom";
 
 
-function Header({ user }) {
+function Header({ user, setUser }) {
     const navigate = useNavigate();
 
     function goToHome() {
@@ -13,7 +13,7 @@ function Header({ user }) {
 
     return (
         <header className="header">
-            <HamburgerMenu />
+            <HamburgerMenu setUser={setUser}/>
             <h1 className="header-title">{user.partnerOneName} & {user.partnerTwoName}</h1>
             <div className="header-image" onClick={goToHome}></div>
         </header>
