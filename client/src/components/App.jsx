@@ -8,13 +8,15 @@ import CheckList from "./CheckList";
 import Settings from "./Settings";
 import Account from "./Account";
 import Emergency from "./Emergency";
+import UserProfile from "./UserProfile";
+
 import Chat from "./Chat";
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   const [user, setUser] = useState(() => {
-    const storedUser = localStorage.getItem("token");
-    return storedUser ? { userID: storedUser } : null;
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
   });
 
   return (
@@ -71,6 +73,14 @@ function App() {
             element={
               <ProtectedRoute user={user}>
                 <Emergency user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute user={user}>
+                <UserProfile user={user} />
               </ProtectedRoute>
             }
           />

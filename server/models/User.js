@@ -3,10 +3,12 @@ const bcrypt = require("bcrypt");
 
 const userSchema = new Schema(
     {
-        fullName: { type: String, required: false },
+        partnerOneName: { type: String, required: false },
+        partnerTwoName: { type: String, required: false },
         username: { type: String, required: false, unique: true },
         email: { type: String, required: false, unique: true },
-        password: { type: String, required: false },
+        phone: { type: String, required: true },
+        password: { type: String, required: true },
         role: {
             type: String,
             enum: ["Bride", "Groom", "Other"],
@@ -17,8 +19,8 @@ const userSchema = new Schema(
             enum: ["BrideAndGroom", "BrideAndBride", "GroomAndGroom"],
             default: "BrideAndGroom",
         },
-        wedding_date: { type: Date, required: false },
-        completedTasks: { type: [String], default: [] }, 
+        weddingDate: { type: Date, required: true },
+        completedTasks: { type: [String], default: [] },
     },
     { collection: "users" }
 );

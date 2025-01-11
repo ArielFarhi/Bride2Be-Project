@@ -22,7 +22,9 @@ function Login({ setUser }) {
 
             const data = await response.json();
             if (response.ok) {
-                localStorage.setItem("token", data.user.userID);
+                const user = { ...data.user };
+                user.password = "*******";
+                localStorage.setItem("user", JSON.stringify(user));
                 setUser(data.user);
                 navigate("/");
             } else {

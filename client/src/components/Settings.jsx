@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaLock, FaUser, FaShieldAlt, FaQuestionCircle, FaUserPlus, FaBell, FaCog, FaImage } from "react-icons/fa";
-import Header from "./Header";
 
 const Settings = ({ user }) => {
     const navigate = useNavigate();

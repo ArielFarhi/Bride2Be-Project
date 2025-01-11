@@ -15,7 +15,7 @@ const HamburgerMenu = () => {
                 <nav className="menu-nav">
                     <ul className="top-links">
                         <li><Link to="/">🏠 HomePage</Link></li>
-                        <li><Link to="#">👤 Personal Area</Link></li>
+                        <li><Link to="/profile">👤 Personal Area</Link></li>
                         <li><Link to="#">📋 Task Management</Link></li>
                         <li><Link to="#">📦 Vendors</Link></li>
                         <li><Link to="/checklist">✔️ Check List</Link></li>
