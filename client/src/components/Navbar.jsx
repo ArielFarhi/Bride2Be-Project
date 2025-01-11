@@ -16,7 +16,7 @@ const HamburgerMenu = () => {
                     <ul className="top-links">
                         <li><Link to="/home">🏠 HomePage</Link></li>
                         <li><Link to="#">👤 Personal Area</Link></li>
-                        <li><Link to="#">📋 Task Management</Link></li>
+                        <li><Link to="/taskPath">📋 Task Management</Link></li>
                         <li><Link to="#">📦 Vendors</Link></li>
                         <li><Link to="/checklist">✔️ Check List</Link></li>
                         <li><Link to="/emergency">📞 Emergency Planner</Link></li>

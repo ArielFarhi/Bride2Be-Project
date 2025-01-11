@@ -35,6 +35,10 @@ body {
 }
 
 header {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,7 +46,9 @@ header {
     color: #ffffff;
     padding: 16px 32px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    z-index: 1000; 
+  }
+  
 
 .menu-icon {
     font-size: 24px;
@@ -466,6 +472,7 @@ form button:hover {
 }
 
 .chat-container {
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -562,6 +569,7 @@ form button:hover {
     background-color: #aaa;
 }
 .checklist-container {
+    margin-top: 70px;
     max-width: 600px;
     border-radius: 8px;
     background-color: #f9f9f9;
@@ -653,6 +661,7 @@ form button:hover {
 }
 
 .settings-page {
+    margin-top: 70px;
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     color: #333;
@@ -764,10 +773,8 @@ form button:hover {
     height: 160vmin;
 }
 
-/* Emergency.css */
-
-/* General page styling */
 .emergency-page {
+    margin-top: 70px;
     font-family: Arial, sans-serif;
     padding: 20px;
     background-color: #f8f9fa;
@@ -839,4 +846,84 @@ form button:hover {
 .vendor-item p strong {
     color: #343a40;
 }
+
+/* TaskPath.css */
+
+.task-path-container {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-image: url('../images/weddingBackground.webp'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    background-position: center; 
+    min-height: 100vh; 
+}
+  
+.task-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    background-color: #ffffff;
+    border: 3px solid #af8dc3;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px; 
+}
+  
+.task-node:hover {
+    transform: scale(1.2);
+    background-color: #ffe4e9;
+}
+  
+.task-node.completed {
+    background-color: #af8dc3;
+    border-color: #af8dc3;
+    color: #ffffff;
+}
+  
+.task-circle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #af8dc3;
+}
+  
+.task-label {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    color: #333333;
+    font-weight: bold;
+}
+  
+.task-path {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.task-path-container::before,
+.task-path-container::after {
+    background-size: 25%;
+}
+
+
+
+
+
+
+  
+
+
+  
+
+
+  
   

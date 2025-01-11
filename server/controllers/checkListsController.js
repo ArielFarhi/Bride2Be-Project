@@ -1,10 +1,5 @@
 const ChecklistTask = require("../models/Checklist");
-const User = require("../models/User"); //
-
-// async function getChecklistTasks(req, res) {
-//     const checklistTasks = await ChecklistTask.find({});
-//     res.json(checklistTasks);
-// }
+const User = require("../models/User"); 
 
 async function getChecklistTasks(req, res) {
     const { userId } = req.query;
@@ -14,8 +9,8 @@ async function getChecklistTasks(req, res) {
     }
 
     try {
-        const tasks = await ChecklistTask.find(); // שליפת כל המשימות
-        const user = await User.findById(userId); // שליפת המשתמש לפי ID
+        const tasks = await ChecklistTask.find();
+        const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
