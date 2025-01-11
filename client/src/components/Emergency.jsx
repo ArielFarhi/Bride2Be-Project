@@ -36,7 +36,6 @@ const Emergency = ({ user }) => {
 
   return (
     <div>
-      <Header user={user} />
       <div className="emergency-page">
         <h1>Emergency Contacts</h1>
         <div className="vendor-list">

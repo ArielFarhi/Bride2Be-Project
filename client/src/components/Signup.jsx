@@ -29,11 +29,11 @@ function Signup() {
                 body: JSON.stringify(formData),
             });
 
+            const data = await response.json();
             if (response.ok) {
-                const userData = await response.json();
-                localStorage.setItem("user", JSON.stringify(userData));
+                localStorage.setItem("token", data.user.userID);
                 alert("Registration successful!");
-                navigate("/home");
+                navigate("/");
             } else {
                 const errorData = await response.json();
                 setError(errorData.error || "Registration failed. Please try again.");

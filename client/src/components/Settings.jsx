@@ -19,7 +19,6 @@ const Settings = ({ user }) => {
 
   return (
     <div>
-      <Header user={user}/>
         <div className="settings-page">
         <h1>Settings</h1>
       <div className="settings-search">

@@ -14,8 +14,8 @@ async function getChecklistTasks(req, res) {
     }
 
     try {
-        const tasks = await ChecklistTask.find(); // שליפת כל המשימות
-        const user = await User.findById(userId); // שליפת המשתמש לפי ID
+        const tasks = await ChecklistTask.find(); 
+        const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }

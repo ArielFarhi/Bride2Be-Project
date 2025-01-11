@@ -7,7 +7,7 @@ function CheckList({ user }) {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
 
-    const userId = localStorage.getItem("token");
+    const userId = user.userID;
 
     useEffect(() => {
         async function fetchData() {
@@ -85,17 +85,10 @@ function CheckList({ user }) {
 
     return (
         <div className="checklist-container">
-            <Header user={user} />
             <h1>Checklist Tasks</h1>
-            <div className="overall-progress">
-                <h2>Total Progress: {calculateTotalProgress()}%</h2>
-                <div className="progress-bar">
-                    <div
-                        className="progress-bar-fill"
-                        style={{ width: `${calculateTotalProgress()}%` }}
-                    ></div>
-                </div>
-            </div>
+
+            <ProgressBar progress={calculateTotalProgress()} />
+
             {Object.entries(tasks).map(([section, sectionTasks]) => (
                 <div key={section} className="section">
                     <div className="section-header" onClick={() => toggleSection(section)}>

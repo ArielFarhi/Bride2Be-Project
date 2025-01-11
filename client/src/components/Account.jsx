@@ -36,7 +36,6 @@ const Account = ({ user }) => {
 
   return (
     <div>
-      <Header user={user} />
       <div className="account-page">
         <h1>Account Details</h1>
         <div className="account-details">

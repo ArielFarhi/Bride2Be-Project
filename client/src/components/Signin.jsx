@@ -24,7 +24,7 @@ function Login({ setUser }) {
             if (response.ok) {
                 localStorage.setItem("token", data.user.userID);
                 setUser(data.user);
-                navigate("/home");
+                navigate("/");
             } else {
                 setError(data.message || "Login failed. Please check your username and password.");
             }

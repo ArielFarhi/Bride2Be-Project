@@ -28,7 +28,6 @@ function HomePage({ user }) {
 
     return (
         <div>
-            <Header user={user} />
             <div className="home-page">
                 <div className="home-content">
                     <img

@@ -42,7 +42,6 @@ const Chat = ({ user }) => {
 
     return (
         <div className="chat-container">
-            <Header user={user}/>
             <div className="chat-messages">
                 {messages.map((msg, index) => (
                     console.log(`user.username msg.username ${user.username} ${msg.userName}`),
