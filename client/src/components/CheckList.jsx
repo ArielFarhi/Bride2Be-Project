@@ -11,34 +11,13 @@ function CheckList({ user }) {
     const userId = user.userID;
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                setLoading(true);
+        // const tasks = fetch(`http://localhost:8080/api/checklist`, {
 
-                const tasksResponse = await fetch(`http://localhost:8080/api/checklist?userId=${userId}`);
-                if (!tasksResponse.ok) {
-                    throw new Error("Failed to fetch tasks");
-                }
-                const tasksData = await tasksResponse.json();
+        // });
+            
+        
 
-                const groupedTasks = tasksData.reduce((acc, task) => {
-                    if (!acc[task.section]) {
-                        acc[task.section] = [];
-                    }
-                    acc[task.section].push(task);
-                    return acc;
-                }, {});
-
-                setTasks(groupedTasks);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        fetchData();
-    }, [userId]);
+    }, []);
 
     const calculateTotalProgress = () => {
         const allTasks = Object.values(tasks).flat();

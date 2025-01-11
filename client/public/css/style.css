@@ -460,6 +460,7 @@ form button:hover {
 }
 
 .home-page {
+    margin-top: 70px;
     text-align: center;
     padding: 20px;
 }
@@ -505,7 +506,7 @@ form button:hover {
 
 .chat-message {
     padding: 8px 10px;
-    margin: 5px 0;
+    margin: 10px 0;
     border-radius: 8px;
     background-color: #f6f6f6;
     font-size: 14px;
@@ -778,10 +779,9 @@ form button:hover {
 
 .account-page h1 {
     text-align: center;
-    font-size: 32px; 
+    font-size: 24px; 
     color: #af8dc3; 
     font-weight: bold;
-    margin-bottom: 30px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -946,24 +946,11 @@ form button:hover {
 .task-path-container::after {
     background-size: 25%;
 }
-
-
-
-
-
-
-  
-
-
-  
-
-
-  
   
 /* General Container */
 .profile-container {
     max-width: 400px;
-    margin: 40px auto;
+    margin: 70px auto;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 20px;

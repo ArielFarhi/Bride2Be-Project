@@ -20,7 +20,10 @@ const userSchema = new Schema(
             default: "BrideAndGroom",
         },
         weddingDate: { type: Date, required: true },
-        completedTasks: { type: [String], default: [] },
+        completedTasks: {  
+            progress: { type: Number, default: 0 },
+            tasks: { type: Array, default: [] }
+        },
     },
     { collection: "users" }
 );
