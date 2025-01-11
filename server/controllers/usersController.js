@@ -16,18 +16,7 @@ const loginUser = async (req, res) => {
 
         res.status(200).json({
             message: "Login successful",
-            user: {
-                userID: user._id,
-                partnerOneName: user.partnerOneName,
-                partnerTwoName: user.partnerTwoName,
-                username: user.username,
-                email: user.email,
-                phone:user.phone,
-                wedding_date: user.wedding_date,
-                role: user.role,
-                coupleType: user.coupleType,
-                wedding_date: user.wedding_date,
-            },
+            user,
         });
     } catch (error) {
         console.error("Error logging in user:", error);
@@ -75,20 +64,31 @@ const registerUser = async (req, res) => {
     }
 };
 
-const updateCompletedTasks = async (req, res) => {
+const updateCompletedTask = async (req, res) => {
     try {
-        const { userId, taskId, completed } = req.body;
+        const { userId, taskId, completed, progress } = req.body;
 
-        const update = completed
-            ? { $addToSet: { completedTasks: taskId } }
-            : { $pull: { completedTasks: taskId } };
+        const update = {
+            $set: { "completedTasks.progress": progress }
+        };
 
-        const user = await User.findByIdAndUpdate(userId, update, { new: true });
+        if (completed) {
+            update.$addToSet = { "completedTasks.tasks": taskId }; 
+        } else {
+            update.$pull = { "completedTasks.tasks": taskId };  
+        }
+
+        const user = await User.findByIdAndUpdate(
+            userId,
+            update,
+            { new: true }
+        );
+
         if (!user) {
             return res.status(404).json({ error: "User not found" });
         }
 
-        res.status(200).json({ message: "Task status updated successfully", completedTasks: user.completedTasks });
+        res.status(200).json({ message: "Task status updated successfully", user });
     } catch (error) {
         console.error("Error updating completed tasks:", error);
         res.status(500).json({ error: "Failed to update completed tasks" });
@@ -112,6 +112,6 @@ const getUserById = async (req, res) => {
 module.exports = {
     registerUser,
     loginUser,
-    updateCompletedTasks,
+    updateCompletedTask,
     getUserById,
 };

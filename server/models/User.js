@@ -20,12 +20,14 @@ const userSchema = new Schema(
             default: "BrideAndGroom",
         },
         weddingDate: { type: Date, required: true },
-        completedTasks: { type: [String], default: [] },
+        completedTasks: {
+            progress: { type: Number, default: 0, min: 0, max: 100 },
+            tasks: [{ type: String, default: [] }],
+        }
     },
     { collection: "users" }
 );
 
-// Pre-save middleware to hash passwords
 userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
     try {
@@ -36,8 +38,6 @@ userSchema.pre("save", async function (next) {
         next(error);
     }
 });
-
-// module.exports = model("User", userSchema);
 
 const User = model('User', userSchema);
 

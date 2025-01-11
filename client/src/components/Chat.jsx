@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
-import Header from "./Header";
 
 const socket = io("http://localhost:8080");
 
@@ -8,7 +7,6 @@ const Chat = ({ user }) => {
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
     const [connectedUsers, setConnectedUsers] = useState(0);
-
 
     useEffect(() => {
         const fetchMessages = async () => {
@@ -24,7 +22,7 @@ const Chat = ({ user }) => {
         fetchMessages();
 
         socket.on("receive_message", (newMessage) => {
-            setMessages((prevMessages) => [...prevMessages, newMessage]); 
+            setMessages((prevMessages) => [...prevMessages, newMessage]);
         });
 
         socket.on("update_user_count", (count) => {
@@ -32,16 +30,15 @@ const Chat = ({ user }) => {
         });
 
         return () => {
-            socket.off("load_messages");
             socket.off("receive_message");
-            socket.disconnect();
+            socket.off("update_user_count");
         };
     }, []);
 
     const sendMessage = () => {
         if (message.trim() !== "") {
-            const chatMessage = { 
-                username: user.username, 
+            const chatMessage = {
+                username: user.username,
                 text: message,
             };
             socket.emit("send_message", chatMessage);
@@ -51,7 +48,7 @@ const Chat = ({ user }) => {
 
     return (
         <div className="chat-container">
-            <p>Users Online: {connectedUsers}</p>
+            <p>Users online: {connectedUsers}</p>
             <div className="chat-messages">
                 {messages.map((msg, index) => (
                     <div key={index} className={`chat-message ${user.username === msg.username ? "self" : ""}`}>

@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
-import Header from "./Header";
 
-function CheckList({ user }) {
+function CheckList({ user, setUser }) {
     const [tasks, setTasks] = useState([]);
+    const [progress, setProgress] = useState(0);
     const [sections, setSections] = useState({});
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
 
-    const userId = user.userID;
+    const userId = user._id;
 
     useEffect(() => {
-        async function fetchData() {
+        async function initData() {
             try {
                 setLoading(true);
 
-                const tasksResponse = await fetch(`http://localhost:8080/api/checklist?userId=${userId}`);
-                if (!tasksResponse.ok) {
+                const response = await fetch(`http://localhost:8080/api/checklist?userId=${userId}`);
+                if (!response.ok) {
                     throw new Error("Failed to fetch tasks");
                 }
-                const tasksData = await tasksResponse.json();
+                const tasksData = await response.json();
 
                 const groupedTasks = tasksData.reduce((acc, task) => {
                     if (!acc[task.section]) {
@@ -30,6 +30,9 @@ function CheckList({ user }) {
                 }, {});
 
                 setTasks(groupedTasks);
+
+                const progress = calculateTotalProgress(groupedTasks);
+                setProgress(progress);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -37,10 +40,14 @@ function CheckList({ user }) {
             }
         }
 
-        fetchData();
+        initData();
     }, [userId]);
 
-    const calculateTotalProgress = () => {
+    useEffect(() => {
+        setProgress(calculateTotalProgress(tasks));
+    }, [tasks]);
+
+    const calculateTotalProgress = (tasks) => {
         const allTasks = Object.values(tasks).flat();
         const totalTasks = allTasks.length;
         const completedTasks = allTasks.filter((task) => task.completed).length;
@@ -56,23 +63,40 @@ function CheckList({ user }) {
 
     const toggleTaskCompletion = async (taskId, completed) => {
         try {
-            await fetch(`http://localhost:8080/api/users/${userId}/checklist`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ taskId, completed }),
+            const updatedTasks = { ...tasks };
+            Object.keys(updatedTasks).forEach((section) => {
+                updatedTasks[section] = updatedTasks[section].map((task) =>
+                    task.id === taskId ? { ...task, completed: !completed } : task
+                );
             });
 
-            setTasks((prevTasks) => {
-                const updatedTasks = { ...prevTasks };
-                Object.keys(updatedTasks).forEach((section) => {
-                    updatedTasks[section] = updatedTasks[section].map((task) =>
-                        task._id === taskId ? { ...task, completed: !completed } : task
-                    );
-                });
-                return updatedTasks;
+            const updatedProgress = calculateTotalProgress(updatedTasks);
+
+            setTasks(updatedTasks);
+            setProgress(updatedProgress);
+
+            const response = await fetch(`http://localhost:8080/api/users/${userId}/updateTask`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    userId,
+                    taskId,
+                    completed: !completed,
+                    progress: updatedProgress
+                }),
             });
+
+            if (!response.ok) {
+                throw new Error("Failed to update task");
+            }
+
+            const UpdateUser = await response.json();
+            setUser(UpdateUser);
+
         } catch (error) {
             setError(error.message);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -81,8 +105,8 @@ function CheckList({ user }) {
             const isCompletedA = tasksA.every((task) => task.completed);
             const isCompletedB = tasksB.every((task) => task.completed);
 
-            if (isCompletedA && !isCompletedB) return 1; 
-            if (!isCompletedA && isCompletedB) return -1; 
+            if (isCompletedA && !isCompletedB) return 1;
+            if (!isCompletedA && isCompletedB) return -1;
             return 0;
         });
     };
@@ -97,16 +121,15 @@ function CheckList({ user }) {
 
     return (
         <div>
-        <Header user={user} />
             <div className="checklist-container">
                 <h1>Checklist Tasks</h1>
-                <ProgressBar progress={calculateTotalProgress()} />
+                <ProgressBar progress={progress} />
                 {sortSections(tasks).map(([section, sectionTasks]) => {
-                    const isCompleted = sectionTasks.every((task) => task.completed); 
+                    const isCompleted = sectionTasks.every((task) => task.completed);
                     return (
                         <div
                             key={section}
-                            className={`section ${isCompleted ? "completed-section" : ""}`} 
+                            className={`section ${isCompleted ? "completed-section" : ""}`}
                         >
                             <div className="section-header" onClick={() => toggleSection(section)}>
                                 <span>{section}</span>
@@ -127,7 +150,7 @@ function CheckList({ user }) {
                                                     type="checkbox"
                                                     checked={task.completed}
                                                     onChange={() =>
-                                                        toggleTaskCompletion(task._id, task.completed)
+                                                        toggleTaskCompletion(task.id, task.completed)
                                                     }
                                                 />
                                             </div>
