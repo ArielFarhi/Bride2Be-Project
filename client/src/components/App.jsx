@@ -86,6 +86,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/taskPath"
+            element={
+              <ProtectedRoute user={user}>
+                <TaskPath user={user} />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

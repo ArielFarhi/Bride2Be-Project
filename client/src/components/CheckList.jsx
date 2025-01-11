@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
+import Header from "./Header";
 
 function CheckList({ user }) {
     const [tasks, setTasks] = useState([]);
