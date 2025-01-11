@@ -25,7 +25,7 @@ function App() {
           <Route path="/settings" element={<Settings user={user} />} />
           <Route path="/account" element={<Account user={user} />} />
           <Route path="/emergency" element={<Emergency user={user} />} />
-          <Route path="/" element={<TaskPath user={user} />} />
+          <Route path="/TaskPath" element={<TaskPath user={user} />} />
         </Routes>
       </div>
     </Router>
