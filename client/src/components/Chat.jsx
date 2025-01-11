@@ -7,6 +7,8 @@ const socket = io("http://localhost:8080");
 const Chat = ({ user }) => {
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
+    const [connectedUsers, setConnectedUsers] = useState(0);
+
 
     useEffect(() => {
         const fetchMessages = async () => {
@@ -23,6 +25,10 @@ const Chat = ({ user }) => {
 
         socket.on("receive_message", (newMessage) => {
             setMessages((prevMessages) => [...prevMessages, newMessage]); 
+        });
+
+        socket.on("update_user_count", (count) => {
+            setConnectedUsers(count);
         });
 
         return () => {
@@ -45,10 +51,11 @@ const Chat = ({ user }) => {
 
     return (
         <div className="chat-container">
+            <p>Users Online: {connectedUsers}</p>
             <div className="chat-messages">
                 {messages.map((msg, index) => (
                     <div key={index} className={`chat-message ${user.username === msg.username ? "self" : ""}`}>
-                        <strong>{msg.user || msg.username}: </strong>
+                        <strong>{msg.user || msg.username} </strong>
                         {msg.text || msg.content}
                     </div>
                 ))}

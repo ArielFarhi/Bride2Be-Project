@@ -1,7 +1,12 @@
 const Message = require("./models/Message");
 
 const socketHandler = (io) => {
+    let connectedUsers = 0;  // Counter for connected users
+
     io.on("connection", (socket) => {
+        connectedUsers++;
+        io.emit("update_user_count", connectedUsers); 
+
         console.log("A user connected:", socket.id);
         
         socket.on("send_message", (msg) => {
@@ -24,6 +29,8 @@ const socketHandler = (io) => {
         });
 
         socket.on("disconnect", () => {
+            connectedUsers--;
+            io.emit("update_user_count", connectedUsers); 
             console.log("A user disconnected:", socket.id);
         });
     });
