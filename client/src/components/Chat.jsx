@@ -45,7 +45,6 @@ const Chat = ({ user }) => {
 
     return (
         <div className="chat-container">
-            <Header user={user}/>
             <div className="chat-messages">
                 {messages.map((msg, index) => (
                     <div key={index} className={`chat-message ${user.username === msg.username ? "self" : ""}`}>

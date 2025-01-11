@@ -9,7 +9,7 @@ async function getChecklistTasks(req, res) {
     }
 
     try {
-        const tasks = await ChecklistTask.find();
+        const tasks = await ChecklistTask.find(); 
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ message: "User not found" });

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
 
 const Emergency = ({ user }) => {
   const [vendors, setVendors] = useState([]);
@@ -55,7 +54,6 @@ const Emergency = ({ user }) => {
 
   return (
     <div>
-      <Header user={user} />
       <div className="emergency-page">
         <h1>Emergency Contacts</h1>
 

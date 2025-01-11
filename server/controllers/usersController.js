@@ -18,7 +18,12 @@ const loginUser = async (req, res) => {
             message: "Login successful",
             user: {
                 userID: user._id,
+                partnerOneName: user.partnerOneName,
+                partnerTwoName: user.partnerTwoName,
                 username: user.username,
+                email: user.email,
+                phone:user.phone,
+                wedding_date: user.wedding_date,
                 role: user.role,
                 coupleType: user.coupleType,
                 wedding_date: user.wedding_date,
@@ -32,7 +37,7 @@ const loginUser = async (req, res) => {
 
 const registerUser = async (req, res) => {
     try {
-        const { fullName, username, email, password, role, coupleType, wedding_date } = req.body;
+        const { partnerOneName, partnerTwoName, username, email, phone, password, role, coupleType, weddingDate } = req.body;
 
         const existingUser = await User.findOne({ $or: [{ email }, { username }] });
         if (existingUser) {
@@ -40,24 +45,28 @@ const registerUser = async (req, res) => {
         }
 
         const newUser = new User({
-            fullName,
+            partnerOneName,
+            partnerTwoName,
             username,
             email,
+            phone,
             password,
             role,
             coupleType,
-            wedding_date,
+            weddingDate,
         });
 
         await newUser.save();
-        res.status(201).json({ 
+        res.status(201).json({
             message: "User registered successfully!",
-            user: { 
+            user: {
                 userID: newUser._id,
+                partnerOneName: newUser.partnerOneName,
+                partnerTwoName: newUser.partnerTwoName,
                 username: newUser.username,
                 role: newUser.role,
                 coupleType: newUser.coupleType,
-                wedding_date: newUser.wedding_date,
+                weddingDate: newUser.weddingDate,
             },
         });
     } catch (error) {
@@ -71,8 +80,8 @@ const updateCompletedTasks = async (req, res) => {
         const { userId, taskId, completed } = req.body;
 
         const update = completed
-            ? { $addToSet: { completedTasks: taskId } } 
-            : { $pull: { completedTasks: taskId } }; 
+            ? { $addToSet: { completedTasks: taskId } }
+            : { $pull: { completedTasks: taskId } };
 
         const user = await User.findByIdAndUpdate(userId, update, { new: true });
         if (!user) {
@@ -89,7 +98,7 @@ const updateCompletedTasks = async (req, res) => {
 const getUserById = async (req, res) => {
     try {
         const { userId } = req.params;
-        const user = await User.findById(userId).select("-password"); 
+        const user = await User.findById(userId).select("-password");
         if (!user) {
             return res.status(404).json({ error: "User not found" });
         }

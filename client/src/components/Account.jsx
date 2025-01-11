@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
 
 const Account = ({ user }) => {
   const [userData, setUserData] = useState(null);
@@ -36,7 +35,6 @@ const Account = ({ user }) => {
 
   return (
     <div>
-      <Header user={user} />
       <div className="account-page">
         <h1>Account Details</h1>
         <div className="account-details">

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
 import ProgressBar from "./ProgressBar";
 
 function HomePage({ user }) {
@@ -27,7 +26,6 @@ function HomePage({ user }) {
 
     return (
         <div>
-            <Header user={user} />
             <div className="home-page">
                 <div className="home-content">
                     <img

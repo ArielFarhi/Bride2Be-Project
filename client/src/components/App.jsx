@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Header from "./Header";
 import Signup from "./Signup";
-import Signin from "./Signin";
+import Login from "./Login";
 import HomePage from "./HomePage";
 import CheckList from "./CheckList";
 import Settings from "./Settings";
@@ -9,23 +11,82 @@ import Account from "./Account";
 import Emergency from "./Emergency";
 import Chat from "./Chat";
 import TaskPath from "./TaskPath";
+import UserProfile from "./UserProfile";
+import ProtectedRoute from "./ProtectedRoute";
+import NotFound from "./NotFound";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+
   return (
     <Router>
       <div className="App">
+        {user && <Header user={user} setUser={setUser} />}
 
         <Routes>
-          <Route path="/login" element={<Signin setUser={setUser}/>} />
-          <Route path="/chat" element={<Chat user={user}/>} />
-          <Route path="/home" element={<HomePage user={user} />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Signup />} />
-          <Route path="/checklist" element={<CheckList user={user} />} />
-          <Route path="/settings" element={<Settings user={user} />} />
-          <Route path="/account" element={<Account user={user} />} />
-          <Route path="/emergency" element={<Emergency user={user} />} />
-          <Route path="/TaskPath" element={<TaskPath user={user} />} />
+
+          <Route
+            path="/chat"
+            element={
+              <ProtectedRoute user={user}>
+                <Chat user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute user={user}>
+                <HomePage user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/checklist"
+            element={
+              <ProtectedRoute user={user}>
+                <CheckList user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute user={user}>
+                <Settings user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/account"
+            element={
+              <ProtectedRoute user={user}>
+                <Account user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/emergency"
+            element={
+              <ProtectedRoute user={user}>
+                <Emergency user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute user={user}>
+                <UserProfile user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
@@ -33,4 +94,3 @@ function App() {
 }
 
 export default App;
-

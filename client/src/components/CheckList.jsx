@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
 import ProgressBar from "./ProgressBar";
 
 function CheckList({ user }) {
@@ -8,7 +7,7 @@ function CheckList({ user }) {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
 
-    const userId = localStorage.getItem("token");
+    const userId = user.userID;
 
     useEffect(() => {
         async function fetchData() {
