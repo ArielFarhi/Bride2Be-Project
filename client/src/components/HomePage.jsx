@@ -24,9 +24,7 @@ function HomePage({ user }) {
                 const hours = String(Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
                 const minutes = String(Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
                 setCountdown({ days, hours, minutes });
-            } else {
-                clearInterval(timer);
-            }
+            } 
         };
 
         calculateCountdown();

@@ -88,7 +88,7 @@ const updateCompletedTask = async (req, res) => {
             return res.status(404).json({ error: "User not found" });
         }
 
-        res.status(200).json({ message: "Task status updated successfully", user });
+        res.status(200).json({ ...user._doc });
     } catch (error) {
         console.error("Error updating completed tasks:", error);
         res.status(500).json({ error: "Failed to update completed tasks" });
