@@ -1,11 +1,12 @@
 const ChecklistTask = require("../models/Checklist");
 const User = require("../models/User"); 
 
+
 async function getChecklistTasks(req, res) {
     const { userId } = req.query;
 
-    if (!userId) {
-        return res.status(400).json({ message: "User ID is required" });
+    if(!userId) {
+        return res.status(400).json({ message: "Missing user ID" });
     }
 
     try {
@@ -15,10 +16,10 @@ async function getChecklistTasks(req, res) {
             return res.status(404).json({ message: "User not found" });
         }
 
-        const completedTasks = user.completedTasks || [];
+        const userTasks = user.completedTasks.tasks || [];
         const tasksWithStatus = tasks.map((task) => ({
             ...task._doc,
-            completed: completedTasks.includes(task._id.toString()),
+            completed: userTasks.some((id) => id.toString() === task.id.toString()),
         }));
 
         res.status(200).json(tasksWithStatus);

@@ -1,11 +1,11 @@
 const { Router } = require("express");
-const { registerUser, loginUser, updateCompletedTasks, getUserById } = require("../controllers/usersController");
+const { registerUser, loginUser, updateCompletedTask, getUserById } = require("../controllers/usersController");
 
 const usersRouter = new Router();
 
 usersRouter.post("/register", registerUser);
 usersRouter.post("/login", loginUser);
-usersRouter.post("/checklist", updateCompletedTasks);
+usersRouter.post("/:userId/updateTask", updateCompletedTask);
 usersRouter.get("/:userId", getUserById);
 
 module.exports = { usersRouter };

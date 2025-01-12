@@ -31,14 +31,6 @@ function App() {
           <Route path="/register" element={<Signup />} />
 
           <Route
-            path="/chat"
-            element={
-              <ProtectedRoute user={user}>
-                <Chat user={user} />
-              </ProtectedRoute>
-            }
-          />
-          <Route
             path="/"
             element={
               <ProtectedRoute user={user}>
@@ -50,7 +42,7 @@ function App() {
             path="/checklist"
             element={
               <ProtectedRoute user={user}>
-                <CheckList user={user} />
+                <CheckList user={user} setUser={setUser} />
               </ProtectedRoute>
             }
           />
@@ -94,6 +86,15 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/chat"
+            element={
+              <ProtectedRoute user={user}>
+                <Chat user={user} />
+              </ProtectedRoute>
+            }
+          />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
