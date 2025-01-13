@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaExclamationTriangle, FaComments, FaCogs, FaUserCircle } from "react-icons/fa"; // אייקונים
 import ProgressBar from "./ProgressBar";
-
 
 function HomePage({ user }) {
     const [countdown, setCountdown] = useState({
@@ -20,11 +20,11 @@ function HomePage({ user }) {
             const timeDiff = weddingDate - now;
 
             if (timeDiff > 0) {
-                const days = String(Math.floor(timeDiff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-                const hours = String(Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-                const minutes = String(Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                const days = String(Math.floor(timeDiff / (1000 * 60 * 60 * 24))).padStart(2, "0");
+                const hours = String(Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
+                const minutes = String(Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
                 setCountdown({ days, hours, minutes });
-            } 
+            }
         };
 
         calculateCountdown();
@@ -35,6 +35,10 @@ function HomePage({ user }) {
 
     const handleProgressBarClick = () => {
         navigate("/checklist");
+    };
+
+    const handleCardClick = (path) => {
+        navigate(path);
     };
 
     return (
@@ -67,6 +71,24 @@ function HomePage({ user }) {
                 </div>
                 <div className="progress-bar-container">
                     <ProgressBar progress={user.completedTasks.progress} onClick={handleProgressBarClick} />
+                </div>
+                <div className="cards-container">
+                    <div className="card" onClick={() => handleCardClick("/emergency")}>
+                        <FaExclamationTriangle className="card-icon" />
+                        <h3>Emergency Planner</h3>
+                    </div>
+                    <div className="card" onClick={() => handleCardClick("/chat")}>
+                        <FaComments className="card-icon" />
+                        <h3>Chat</h3>
+                    </div>
+                    <div className="card" onClick={() => handleCardClick("/settings")}>
+                        <FaCogs className="card-icon" />
+                        <h3>Settings</h3>
+                    </div>
+                    <div className="card" onClick={() => handleCardClick("/profile")}>
+                        <FaUserCircle className="card-icon" />
+                        <h3>Personal Area</h3>
+                    </div>
                 </div>
             </div>
         </div>

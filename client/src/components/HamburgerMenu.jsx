@@ -32,7 +32,7 @@ const HamburgerMenu = ({ setUser }) => {
                         <li>
                             <Logout setUser={setUser} onClick={closeMenu} />
                         </li>
-                        <li><Link to="/settings" onClick={closeMenu}>⚙️ Setting</Link></li>
+                        <li><Link to="/settings" onClick={closeMenu}>⚙️ Settings</Link></li>
                     </ul>
                 </nav>
             </div>

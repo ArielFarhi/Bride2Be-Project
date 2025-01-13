@@ -13,7 +13,6 @@
     font-size: 30px;
     font-weight: normal;
     color: #ffffff;
-    margin: 0;
     text-transform: capitalize;
     letter-spacing: 0.5px;
 }
@@ -56,13 +55,6 @@ header {
     cursor: pointer;
 }
 
-header h1 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff;
-    margin: 0;
-}
-
 .header-image {
     width: 50px;
     height: 50px;
@@ -80,8 +72,8 @@ header h1 {
     cursor: pointer;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
 }
 
 .menu-button:hover {
@@ -609,17 +601,6 @@ form button:hover {
     background-color: #fff;
 }
 
-.section-header {
-    padding: 10px;
-    margin: 10px;
-    font-weight: bold;
-    color: black;
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-    border-radius: 6px 6px 0 0;
-}
-
 .completed-section {
     background-color: #d8bfd8;
     border: 1px solid #af8dc3;
@@ -829,8 +810,6 @@ form button:hover {
 
 .filter-section label {
     margin-right: 10px;
-    font-size: 16px;
-    color: #495057;
 }
 
 .filter-section select {
@@ -838,7 +817,6 @@ form button:hover {
     font-size: 16px;
     border: 1px solid #ced4da;
     border-radius: 4px;
-    background-color: #fff;
     color: #495057;
 }
 
@@ -855,7 +833,6 @@ form button:hover {
     border-radius: 8px;
     padding: 15px;
     width: 300px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -897,10 +874,6 @@ form button:hover {
 }
 
 .task-node {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 120px;
     height: 120px;
     background-color: #ffffff;
@@ -908,23 +881,37 @@ form button:hover {
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
-}
-
-.task-node:hover {
-    transform: scale(1.2);
-    background-color: #ffe4e9;
+    position: relative;
 }
 
 .task-node.completed {
-    background-color: #af8dc3;
-    border-color: #af8dc3;
-    color: #ffffff;
+    background-color: #d4edda; 
+    color: #155724; 
+    border-color: #c3e6cb;
 }
 
 .task-circle {
     font-size: 20px;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: white;
     color: #af8dc3;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.task-node.completed .task-circle {
+    background-color: #28a745;
+    color: white;
+}
+
+.task-icon {
+    font-size: 20px;
+    color: white; 
 }
 
 .task-label {
@@ -933,6 +920,10 @@ form button:hover {
     text-align: center;
     color: #333333;
     font-weight: bold;
+}
+
+.task-node.completed .task-label {
+    color: #155724; 
 }
 
 .task-path {
@@ -967,25 +958,16 @@ form button:hover {
     gap: 10px;
 }
 
-
-/* תמונת פרופיל */
 .profile-picture {
     width: 120px;
-    /* גודל רוחב */
     height: 120px;
-    /* גודל גובה */
     border-radius: 50%;
-    /* עיגול מושלם */
     border: 3px solid #007bff;
-    /* מסגרת כחולה */
     background-image: url('../images/default-profile.webp');
     background-size: cover;
-    /* התמונה מכסה את כל האלמנט */
     background-position: center;
-    /* מיקום מרכזי */
     background-repeat: no-repeat;
 }
-
 
 /* Names */
 .profile-header h1 {
@@ -1043,12 +1025,13 @@ form button:hover {
 
 /* Preferences/Additional Sections */
 .section-header {
-    margin-top: 30px;
     font-size: 16px;
     font-weight: bold;
-    text-align: left;
-    color: #333;
-    margin-bottom: 10px;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
 }
 
 .section-item {
@@ -1148,8 +1131,46 @@ form button:hover {
 
 .progress-bar-container {
     background-color: #fff5f8;
-    height: 130px;
     align-content: center;
     border-radius: 10px;
-    margin: 0 20px;
 }
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px; 
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    width: 45%; 
+    min-height: 120px; 
+    padding: 20px;
+    background-color: #fff5f8;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-icon {
+    font-size: 25px;
+    color: #af8dc3;
+    margin-bottom: 10px;
+}
+
+
