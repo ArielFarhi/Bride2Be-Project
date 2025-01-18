@@ -17,14 +17,10 @@
     letter-spacing: 0.5px;
 }
 
-html {
-    font-family: "Montserrat", sans-serif;
-}
-
 body {
     margin: 0;
     padding: 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'CustomComicSans', 'Comic Sans MS', 'Comic Sans', cursive;
     background: linear-gradient(135deg, #af8dc3, #f6f6f6);
     min-height: 100vh;
     display: flex;
@@ -161,7 +157,6 @@ header {
     text-decoration: none;
     color: #000;
     font-size: 16px;
-    font-family: "Times New Roman", serif;
 }
 
 .hamburger-menu button {
@@ -191,7 +186,6 @@ header {
     font-size: 24px;
     color: #af8dc3;
     margin-bottom: 20px;
-    font-family: "Montserrat", sans-serif;
 }
 
 .name-input {
@@ -246,7 +240,6 @@ form input {
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 16px;
-    font-family: "Montserrat", sans-serif;
 }
 
 .role-container {
@@ -301,7 +294,6 @@ form input {
     font-size: 14px;
     color: #666;
     text-align: center;
-    font-family: "Montserrat", sans-serif;
 }
 
 .role-selection input[type="radio"]:checked+label {
@@ -396,7 +388,6 @@ form input {
     border: 1px solid #ddd;
     border-radius: 10px;
     font-size: 16px;
-    font-family: "Montserrat", sans-serif;
     color: #444444;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -674,7 +665,6 @@ form button:hover {
 
 .settings-page {
     margin-top: 70px;
-    font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     color: #333;
     padding: 20px;
@@ -755,7 +745,6 @@ form button:hover {
     background: linear-gradient(135deg, #ffffff, #f7f3f7);
     border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    font-family: "Montserrat", sans-serif;
 }
 
 .account-page h1 {
@@ -788,7 +777,6 @@ form button:hover {
 
 .emergency-page {
     margin-top: 70px;
-    font-family: Arial, sans-serif;
     padding: 20px;
     background-color: #f8f9fa;
     color: #343a40;
@@ -947,7 +935,6 @@ form button:hover {
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    font-family: Arial, sans-serif;
 }
 
 /* Profile Header */
@@ -1103,7 +1090,7 @@ form button:hover {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    background: #fff5f8;
+    background: white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
@@ -1113,9 +1100,8 @@ form button:hover {
 
 .circle-content {
     text-align: center;
-    font-family: 'Arial', sans-serif;
     font-weight: bold;
-    color: #e39ad3;
+    color: #af8dc3;
 }
 
 .circle-number {
@@ -1130,7 +1116,7 @@ form button:hover {
 }
 
 .progress-bar-container {
-    background-color: #fff5f8;
+    background-color: white;
     align-content: center;
     border-radius: 10px;
 }
@@ -1147,7 +1133,7 @@ form button:hover {
     width: 45%; 
     min-height: 120px; 
     padding: 20px;
-    background-color: #fff5f8;
+    background-color: white;
     border-radius: 8px;
     cursor: pointer;
     display: flex; 
