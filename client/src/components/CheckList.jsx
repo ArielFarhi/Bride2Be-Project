@@ -13,7 +13,6 @@ function CheckList({ user, setUser }) {
     useEffect(() => {
         async function initData() {
             try {
-                console.log('IN EFFECT',user);
                 setLoading(true);
 
                 const response = await fetch(`http://localhost:8080/api/checklist?userId=${user._id}`);
@@ -42,7 +41,7 @@ function CheckList({ user, setUser }) {
         }
 
         initData();
-    }, [user]);
+    }, [user._id]);
 
     useEffect(() => {
         setProgress(calculateTotalProgress(tasks));
