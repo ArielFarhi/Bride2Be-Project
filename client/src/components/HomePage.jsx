@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaExclamationTriangle, FaComments, FaCogs, FaUserCircle } from "react-icons/fa"; // אייקונים
+import { FaExclamationTriangle, FaComments, FaCogs, FaUserCircle } from "react-icons/fa"; 
 import ProgressBar from "./ProgressBar";
 
 function HomePage({ user }) {
