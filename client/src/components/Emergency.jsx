@@ -58,7 +58,7 @@ const Emergency = ({ user }) => {
         <h1>Emergency Contacts</h1>
 
         <div className="filter-section">
-          <label htmlFor="category-filter">Filter by Category:</label>
+          <label htmlFor="category-filter">Filter:</label>
           <select
             id="category-filter"
             value={selectedCategory}
