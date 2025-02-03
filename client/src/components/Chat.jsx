@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import io from "socket.io-client";
-
-const socket = io("http://localhost:8080");
+import socket from "../services/socketService";
 
 const Chat = ({ user }) => {
     const [message, setMessage] = useState("");
@@ -9,6 +7,10 @@ const Chat = ({ user }) => {
     const [connectedUsers, setConnectedUsers] = useState(0);
 
     useEffect(() => {
+        if (!socket.connected) {
+            socket.connect();
+        }
+
         const fetchMessages = async () => {
             try {
                 const response = await fetch("http://localhost:8080/api/messages");
@@ -24,6 +26,8 @@ const Chat = ({ user }) => {
         socket.on("receive_message", (newMessage) => {
             setMessages((prevMessages) => [...prevMessages, newMessage]);
         });
+
+        socket.emit("request_user_count");
 
         socket.on("update_user_count", (count) => {
             setConnectedUsers(count);
