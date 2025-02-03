@@ -15,7 +15,6 @@ function UserProfile({ user }) {
                 <p><strong>Couple Type:</strong> {user.coupleType}</p>
                 <p><strong>Role:</strong> {user.role}</p>
             </div>
-            <button className="edit-profile-button">Edit Profile</button>
         </div>
     );
 }
