@@ -448,12 +448,21 @@ form button:hover {
     padding: 20px;
 }
 
-.couple-image {
-    width: 300px;
+.homepage-video {
+    width: 100%;
     height: auto;
-    margin: 20px auto;
-    border-radius: 10px;
+    max-height: 600px; 
+    object-fit: cover; 
+    display: block;
+    border-radius: 10px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .homepage-video {
+        max-height: 400px;
+    }
 }
 
 .countdown {
@@ -845,8 +854,6 @@ form button:hover {
     color: #343a40;
 }
 
-/* TaskPath.css */
-
 .task-path-container {
     margin-top: 70px;
     display: flex;
@@ -926,7 +933,6 @@ form button:hover {
     background-size: 25%;
 }
   
-/* General Container */
 .profile-container {
     max-width: 400px;
     margin: 70px auto;
@@ -937,7 +943,6 @@ form button:hover {
     text-align: center;
 }
 
-/* Profile Header */
 .profile-header {
     display: flex;
     flex-direction: column;
@@ -956,7 +961,6 @@ form button:hover {
     background-repeat: no-repeat;
 }
 
-/* Names */
 .profile-header h1 {
     font-size: 20px;
     font-weight: bold;
@@ -970,24 +974,6 @@ form button:hover {
     margin: 0;
 }
 
-/* Edit Profile Button */
-.edit-profile-button {
-    margin-top: 15px;
-    background-color: #000000;
-    color: #ffffff;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.edit-profile-button:hover {
-    background-color: #333333;
-}
-
-/* Details Section */
 .profile-details {
     margin-top: 20px;
     text-align: left;
@@ -1010,7 +996,6 @@ form button:hover {
     color: #555;
 }
 
-/* Preferences/Additional Sections */
 .section-header {
     font-size: 16px;
     font-weight: bold;
