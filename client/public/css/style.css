@@ -4,16 +4,11 @@
     box-sizing: border-box;
 }
 
-#root {
-    height: 100%;
-}
-
 .header-title {
     font-family: "Times New Roman", serif;
     font-size: 30px;
     font-weight: normal;
     color: #ffffff;
-    text-transform: capitalize;
     letter-spacing: 0.5px;
 }
 
@@ -74,7 +69,6 @@ header {
 
 .menu-button:hover {
     background-color: #f8f8f8;
-    transform: scale(1.05);
 }
 
 .hamburger-menu {
@@ -84,7 +78,6 @@ header {
     width: 300px;
     height: 100vh;
     color: black;
-    transition: left 0.3s ease-in-out;
     box-shadow: none;
     z-index: 999;
 }
@@ -174,7 +167,7 @@ header {
 
 .login-register {
     max-width: 400px;
-    margin: 50px auto;
+    margin: 20px auto;
     background-color: #ffffff;
     border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -210,12 +203,8 @@ header {
     background-color: #d8bfd8;
     border: 2px solid #af8dc3;
     color: #ffffff;
-    font-size: 20px;
     border-radius: 10px;
-    padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    flex: 1;
     margin: 0 5px;
     display: flex;
     align-items: center;
@@ -225,21 +214,11 @@ header {
 .couple-button.active {
     background-color: #af8dc3;
     color: #ffffff;
-    border-color: #444;
 }
 
 .couple-button:hover {
     background-color: #f2d5e2;
     transform: scale(1.05);
-}
-
-form input {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
 }
 
 .role-container {
@@ -269,7 +248,6 @@ form input {
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    transition: transform 0.2s ease;
 }
 
 .role-selection .icon {
@@ -283,7 +261,6 @@ form input {
     font-size: 24px;
     margin-bottom: 8px;
     border: 2px solid transparent;
-    transition: all 0.3s ease;
 }
 
 .role-selection label:hover .icon {
@@ -310,7 +287,6 @@ form button {
     font-size: 16px;
     cursor: pointer;
     margin-top: 20px;
-    transition: background-color 0.3s ease;
 }
 
 form button:hover {
@@ -355,7 +331,6 @@ form button:hover {
     text-align: center;
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .login-container:hover {
@@ -389,7 +364,6 @@ form input {
     border-radius: 10px;
     font-size: 16px;
     color: #444444;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
@@ -410,7 +384,6 @@ form button {
     font-weight: bold;
     cursor: pointer;
     margin-top: 20px;
-    transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -427,7 +400,6 @@ form button:hover {
     color: #af8dc3;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .login-container .register-btn:hover {
@@ -457,6 +429,7 @@ form button:hover {
     border-radius: 10px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 @media (max-width: 768px) {
@@ -479,21 +452,26 @@ form button:hover {
 
 .chat-container {
     margin-top: 80px;
+    padding-bottom: 80px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid #ddd;
-    border-radius: 8px;
     background-color: #f9f9f9;
-    overflow: hidden;
+}
+
+.chat-container p {
+    margin: auto;
+    padding: 10px;
+    background-color: #f9f9f9;
 }
 
 .chat-messages {
     flex-direction: column;
-    padding: 10px;
-    overflow-y: auto;
-    height: 78vh;
-    background-color: #ffffff;
+    padding: 0 10px;
+    overflow: hidden;
+    overflow-y: scroll; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none;   
 }
 
 .chat-message {
@@ -509,11 +487,11 @@ form button:hover {
 }
 
 .chat-message.self {
-     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     justify-self: flex-end;
     background-color: #e8f5e9;
     justify-content: flex-end;
-    text-align: right;
+    text-align: left;
     border-top-right-radius: 0;
 
 }
@@ -534,6 +512,7 @@ form button:hover {
     padding: 10px;
     background-color: #f0f0f0;
     border-top: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .chat-input input {
@@ -541,9 +520,7 @@ form button:hover {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-    transition: border-color 0.3s ease;
+    border-radius: 8px;
 }
 
 .chat-input input:focus {
@@ -557,10 +534,9 @@ form button:hover {
     background-color: #af8dc3;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    background-color: linear-gradient(135deg, #af8dc3, #8c6a8d);
-    transition: background-color 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .chat-input button:hover {
@@ -583,7 +559,6 @@ form button:hover {
 
 .checklist-container {
     margin-top: 80px;
-    border-radius: 8px;
     background-color: #f9f9f9;
     padding-bottom: 10px;
 }
@@ -601,13 +576,13 @@ form button:hover {
     border: 1px solid #ccc;
     border-radius: 16px;
     background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .completed-section {
     background-color: #d8bfd8;
     border: 1px solid #af8dc3;
     color: #ffffff;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .completed-section .section-header {
@@ -661,6 +636,7 @@ form button:hover {
 }
 
 .progress-bar {
+    border: 1px solid gray;
     height: 20px;
     background-color: #ddd;
     border-radius: 10px;
@@ -671,7 +647,6 @@ form button:hover {
 .progress-bar-fill {
     height: 100%;
     background-color: #d8bfd8;
-    transition: width 0.3s ease-in-out;
 }
 
 .settings-page {
@@ -691,7 +666,7 @@ form button:hover {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 16px;
     outline: none;
 }
 
@@ -713,10 +688,9 @@ form button:hover {
     padding: 15px 10px;
     margin-bottom: 10px;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .settings-item:hover {
@@ -746,7 +720,7 @@ form button:hover {
 .settings-page h1 {
     font-size: 24px;
     color: #af8dc3;
-    margin-bottom: 20px;
+    margin: 20px 0;
     text-align: center;
 }
 
@@ -789,22 +763,23 @@ form button:hover {
 .emergency-page {
     margin-top: 70px;
     padding: 20px;
-    background-color: white;
+    background-color: #f9f9f9;
     color: #343a40;
 }
 
 .emergency-page h1 {
     font-size: 24px;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
     color: #af8dc3;
 }
 
 .filter-section {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     margin-bottom: 20px;
+    margin-left: 20px;
 }
 
 .filter-section label {
@@ -812,7 +787,7 @@ form button:hover {
 }
 
 .filter-section select {
-    padding: 8px 12px;
+    padding: 2px;
     font-size: 16px;
     border: 1px solid #ced4da;
     border-radius: 4px;
@@ -827,22 +802,15 @@ form button:hover {
 }
 
 .vendor-item {
-    background-color: #f9f9f9;;
+    background-color: white;
     border-radius: 8px;
     padding: 15px;
     width: 300px;
-    transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
 }
-
-.vendor-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
 .vendor-item h2 {
-    font-size: 20px;
-    color: #af8dc3;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
@@ -898,7 +866,6 @@ form button:hover {
     border-radius: 50%;
     background-color: white;
     color: #af8dc3;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .task-node.completed .task-circle {
@@ -940,7 +907,7 @@ form button:hover {
     height: 100vh; 
     margin: 0 auto; 
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #f9f9f9;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin-top: 70px;
@@ -959,6 +926,7 @@ form button:hover {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    margin-top: 10px;
 }
 
 .profile-picture {
@@ -980,13 +948,13 @@ form button:hover {
 }
 
 .profile-header h2 {
-    font-size: 14px;
+    font-size: 16px;
     color: #555;
     margin: 0;
 }
 
 .profile-details {
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: left;
 }
 
@@ -999,6 +967,7 @@ form button:hover {
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 10px;
+    border: 1px solid #ccc;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -1009,7 +978,6 @@ form button:hover {
 
 .section-header {
     font-size: 16px;
-    font-weight: bold;
     padding: 10px;
     margin: 10px;
     display: flex;
@@ -1052,7 +1020,6 @@ form button:hover {
     bottom: 0;
     background-color: #ccc;
     border-radius: 20px;
-    transition: background-color 0.3s;
 }
 
 .section-item .toggle-switch span:before {
@@ -1064,27 +1031,22 @@ form button:hover {
     bottom: 3px;
     background-color: white;
     border-radius: 50%;
-    transition: transform 0.3s;
 }
 
 .section-item .toggle-switch input:checked+span {
     background-color: #4caf50;
 }
 
-.section-item .toggle-switch input:checked+span:before {
-    transform: translateX(20px);
-}
-
 .countdown-circle-container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin: 0 0 20px;
+    margin: 20px 0px 0px 0px;
 }
 
 .circle {
-    width: 90px;
-    height: 90px;
+    width: 95px;
+    height: 95px;
     border-radius: 50%;
     background: white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -1112,9 +1074,7 @@ form button:hover {
 }
 
 .progress-bar-container {
-    background-color: white;
     align-content: center;
-    border-radius: 10px;
 }
 
 .cards-container {
@@ -1122,15 +1082,16 @@ form button:hover {
     flex-wrap: wrap;
     gap: 25px; 
     justify-content: center;
-    margin-top: 20px;
 }
 
 .card {
     width: 45%; 
-    min-height: 120px; 
-    padding: 20px;
+    min-height: 100px; 
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 16px;
     cursor: pointer;
     display: flex; 
     flex-direction: column; 
@@ -1139,13 +1100,11 @@ form button:hover {
 }
 
 .card:hover {
-    transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card h3 {
     font-size: 16px;
-    margin-bottom: 10px;
     color: #333;
 }
 
