@@ -8,11 +8,14 @@ const Emergency = ({ user }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+
   useEffect(() => {
     const fetchVendors = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:8080/api/vendors");
+        const response = await fetch(`${API_BASE_URL}/api/vendors`);
         if (!response.ok) {
           throw new Error("Failed to fetch vendors");
         }

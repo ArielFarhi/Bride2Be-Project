@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 function CheckList({ user, setUser }) {
     const [tasks, setTasks] = useState([]);
     const [progress, setProgress] = useState(0);
@@ -15,7 +17,7 @@ function CheckList({ user, setUser }) {
             try {
                 setLoading(true);
 
-                const response = await fetch(`http://localhost:8080/api/checklist?userId=${user._id}`);
+                const response = await fetch(`${API_BASE_URL}/api/checklist?userId=${user._id}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch tasks");
                 }
@@ -75,7 +77,7 @@ function CheckList({ user, setUser }) {
             setTasks(updatedTasks);
             setProgress(updatedProgress);
 
-            const response = await fetch(`http://localhost:8080/api/users/${userId}/updateTask`, {
+            const response = await fetch(`${API_BASE_URL}/api/users/${userId}/updateTask`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

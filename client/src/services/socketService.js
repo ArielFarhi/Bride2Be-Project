@@ -1,6 +1,8 @@
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:8080", {
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+const socket = io(API_BASE_URL, {
     autoConnect: false,
     reconnection: true,
     reconnectionAttempts: 5,

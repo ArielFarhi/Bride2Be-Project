@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import socket from "../services/socketService";
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Chat = ({ user }) => {
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
@@ -13,7 +15,7 @@ const Chat = ({ user }) => {
 
         const fetchMessages = async () => {
             try {
-                const response = await fetch("http://localhost:8080/api/messages");
+                const response = await fetch(`${API_BASE_URL}/api/messages`);
                 const data = await response.json();
                 setMessages(data);
             } catch (err) {
