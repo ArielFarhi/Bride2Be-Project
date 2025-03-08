@@ -1,4 +1,4 @@
-const ChecklistTask = require("../models/Checklist");
+const ChecklistTask = require("../models/CheckList");
 const User = require("../models/User"); 
 
 
