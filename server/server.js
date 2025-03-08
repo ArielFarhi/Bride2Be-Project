@@ -5,6 +5,7 @@ const { Server } = require("socket.io");
 const logger = require("morgan");
 const cors = require("cors");
 const socketHandler = require("./socketHandler");
+const path = require("path");
 
 const PORT = process.env.PORT || 8080;
 
@@ -34,7 +35,11 @@ socketHandler(io);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger("dev"));
-app.use(cors());
+
+app.use(cors({
+    origin: "*",
+}));
+
 app.use((req, res, next) => {
     res.set("Access-Control-Allow-Origin", "*");
     res.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
@@ -50,6 +55,13 @@ app.use("/api/vendors", vendorsRouter);
 
 app.use((req, res) => {
     res.status(400).send("Page wasn't found");
+});
+
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 server.listen(PORT, () => {
