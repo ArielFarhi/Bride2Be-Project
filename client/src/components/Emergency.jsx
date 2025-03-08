@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Emergency = ({ user }) => {
   const [vendors, setVendors] = useState([]);
   const [filteredVendors, setFilteredVendors] = useState([]);
@@ -7,9 +9,6 @@ const Emergency = ({ user }) => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
-
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
 
   useEffect(() => {
     const fetchVendors = async () => {
