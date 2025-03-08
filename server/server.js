@@ -48,6 +48,12 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 app.use("/api/users", usersRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/api/checklist', checklistRouter);
@@ -55,13 +61,6 @@ app.use("/api/vendors", vendorsRouter);
 
 app.use((req, res) => {
     res.status(400).send("Page wasn't found");
-});
-
-// Serve static frontend files
-app.use(express.static(path.join(__dirname, "public")));
-
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 server.listen(PORT, () => {
