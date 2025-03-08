@@ -52,6 +52,10 @@ app.use(express.static(path.join(__dirname, "public"), {
     setHeaders: (res, path) => {
         if (path.endsWith(".html")) {
             res.setHeader("Content-Type", "text/html; charset=UTF-8");
+        } else if (path.endsWith(".css")) {
+            res.setHeader("Content-Type", "text/css");
+        } else if (path.endsWith(".js")) {
+            res.setHeader("Content-Type", "application/javascript");
         }
     }
 }));
