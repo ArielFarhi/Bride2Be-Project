@@ -48,7 +48,13 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"), {
+    setHeaders: (res, path) => {
+        if (path.endsWith(".html")) {
+            res.setHeader("Content-Type", "text/html; charset=UTF-8");
+        }
+    }
+}));
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
