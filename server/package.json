@@ -4,8 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "run": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cd ../client && npm install && npm run build && mv build ../server/public"
   },
   "keywords": [],
   "author": "",
